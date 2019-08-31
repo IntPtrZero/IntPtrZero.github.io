@@ -27,7 +27,7 @@
   
 
   
-  <link rel="shortcut icon" type="image/x-icon" href="/images/home.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/images/fav.ico">
   
 
   
@@ -47,71 +47,7 @@
 <body>
   
   
-  <div class="cover-wrapper">
-    <cover class='cover  half'>
-      
-        
-  <img class='logo' src='/images/logo.jpg'/>
-
-
-  <div class="m_search">
-    <form name="searchform" class="form u-search-form">
-      <input type="text" class="input u-search-input" placeholder="" />
-      <i class="icon fas fa-search fa-fw"></i>
-    </form>
-  </div>
-
-<div class='menu navgation'>
-  <ul class='h-list'>
-    
-      
-        <li>
-          <a class="nav home" href="/"
-            
-            
-            id="home">
-            <i class='fas fa-edit fa-fw'></i>&nbsp;文章
-          </a>
-        </li>
-      
-        <li>
-          <a class="nav home" href="https://github.com/intptrzero"
-            
-            
-            id="https:github.comintptrzero">
-            <i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
-          </a>
-        </li>
-      
-        <li>
-          <a class="nav home" href="/friends/"
-            
-              rel="nofollow"
-            
-            
-            id="friends">
-            <i class='fas fa-bookmark fa-fw'></i>&nbsp;推荐
-          </a>
-        </li>
-      
-        <li>
-          <a class="nav home" href="/about/"
-            
-              rel="nofollow"
-            
-            
-            id="about">
-            <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
-          </a>
-        </li>
-      
-    
-  </ul>
-</div>
-
-      
-    </cover>
-    <header class="l_header pure">
+  <header class="l_header pure">
   <div id="loading-bar-wrapper">
     <div id="loading-bar" class="pure"></div>
   </div>
@@ -169,6 +105,28 @@
 								</a>
 							</li>
       			
+  						<li>
+								<a class="nav flat-box" href="/links/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="links">
+									<i class='fas fa-bookmark fa-fw'></i>&nbsp;推荐
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/about/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="about">
+									<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+								</a>
+							</li>
+      			
       		
 				</ul>
 			</div>
@@ -211,7 +169,7 @@
                 
                 
                 id="home">
-								<i class='fas fa-clock fa-fw'></i>&nbsp;返回主页
+								<i class='fas fa-clock fa-fw'></i>&nbsp;主页
 							</a>
             </li>
           
@@ -222,7 +180,7 @@
                 
                 
                 id="archives">
-								<i class='fas fa-archive fa-fw'></i>&nbsp;存档文章
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章
 							</a>
             </li>
           
@@ -231,18 +189,18 @@
                 
                 
                 id="https:github.comintptrzero">
-								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
 							</a>
             </li>
           
             <li>
-							<a class="nav flat-box" href="/friends/"
+							<a class="nav flat-box" href="/links/"
                 
                   rel="nofollow"
                 
                 
-                id="friends">
-								<i class='fas fa-bookmark fa-fw'></i>&nbsp;推荐博客
+                id="links">
+								<i class='fas fa-bookmark fa-fw'></i>&nbsp;推荐
 							</a>
             </li>
           
@@ -253,7 +211,7 @@
                 
                 
                 id="about">
-								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于本站
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
 							</a>
             </li>
           
@@ -264,10 +222,9 @@
 	</aside>
 <script>setLoadingBarProgress(40);</script>
 
-  </div>
 
 
-  <div class="l_body">
+  <div class="l_body nocover">
     <div class='body-wrapper'>
       
 <div class='l_main'>
@@ -287,7 +244,6 @@
         
           <div class='post-wrapper'>
             <article class="post reveal ">
-<article class="post reveal ">
   
 
 
@@ -298,8 +254,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/12/28/C-Template/">
-      C++ 模板与泛型
+    <a href="/2018/12/28/C-FunTemplate/">
+      C++模板与泛型 - 函数模板
     </a>
   </h2>
 
@@ -366,7 +322,15 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
+      <h3 id="隐式实例化与显式实例化"><a href="#隐式实例化与显式实例化" class="headerlink" title="隐式实例化与显式实例化"></a>隐式实例化与显式实例化</h3><p>函数模板解决的是不同参数类型的函数重载问题，常规的模板函数声明如下:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">add</span><span class="params">(T arg1, T arg2)</span></span>;</span><br></pre></td></tr></table></figure>
       
+        <div class="readmore">
+          <a href="/2018/12/28/C-FunTemplate/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
       
     </div>
     
@@ -418,6 +382,14 @@
       <div class="social-wrapper">
         
           
+            <a href="https://github.com/intptrzero"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
             <a href="https://leetcode-cn.com/u/intptr/"
               class="social fas fa-code flat-btn"
               target="_blank"
@@ -428,14 +400,6 @@
           
             <a href="mailto:hzau.yuzixiong@qq.com"
               class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://github.com/intptrzero"
-              class="social fab fa-github flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
             </a>
@@ -468,7 +432,7 @@
 </header>
 
   <div class='content pure'>
-    <p>暂无公告~</p>
+    <p>博客界面重写，评论系统切换为Gitalk，文章将逐步恢复访问。  <div style="text-align:right"> –2019/08/20</div></p>
 
   </div>
 </section>
@@ -530,7 +494,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/tag/" style="font-size: 14px; color: #999">tag</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a>
+      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a>
     </div>
   </section>
 
@@ -566,7 +530,7 @@
       
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
   <div class="aplayer"
-    data-theme="rgba(240,240,240,0.6)"
+    data-theme="#1BCDFC"
     
     
     data-mode="circulation"
@@ -640,6 +604,14 @@
     <div class="social-wrapper">
       
         
+          <a href="https://github.com/intptrzero"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
           <a href="https://leetcode-cn.com/u/intptr/"
             class="social fas fa-code flat-btn"
             target="_blank"
@@ -650,14 +622,6 @@
         
           <a href="mailto:hzau.yuzixiong@qq.com"
             class="social fas fa-envelope flat-btn"
-            target="_blank"
-            rel="external nofollow noopener noreferrer">
-          </a>
-        
-      
-        
-          <a href="https://github.com/intptrzero"
-            class="social fab fa-github flat-btn"
             target="_blank"
             rel="external nofollow noopener noreferrer">
           </a>
@@ -700,8 +664,10 @@
     
   </div>
   <div>
+  Powered by Github and MarkdownPad 2
   </div>
-  <div>---------- 别拉了，我是有底线的>_< ----------</div>
+  <br>
+  <div>--------------------------- 别拉了，我是有底线的>_< ---------------------------</div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
 
@@ -766,16 +732,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
     <script type="text/javascript">
       $(function(){
-        if ('.cover') {
-          $('.cover').backstretch(
-          ["/images/back.jpg"],
+        if ('') {
+          $('').backstretch(
+          ["/images/back.jpg", "/images/back1.jpg", "/images/back2.jpg"],
           {
             duration: "6000",
             fade: "2500"
           });
         } else {
           $.backstretch(
-          ["/images/back.jpg"],
+          ["/images/back.jpg", "/images/back1.jpg", "/images/back2.jpg"],
           {
             duration: "6000",
             fade: "2500"

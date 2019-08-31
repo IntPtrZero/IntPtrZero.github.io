@@ -27,7 +27,7 @@
   
 
   
-  <link rel="shortcut icon" type="image/x-icon" href="/images/home.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/images/fav.ico">
   
 
   
@@ -105,6 +105,28 @@
 								</a>
 							</li>
       			
+  						<li>
+								<a class="nav flat-box" href="/links/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="links">
+									<i class='fas fa-bookmark fa-fw'></i>&nbsp;推荐
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/about/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="about">
+									<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+								</a>
+							</li>
+      			
       		
 				</ul>
 			</div>
@@ -147,7 +169,7 @@
                 
                 
                 id="home">
-								<i class='fas fa-clock fa-fw'></i>&nbsp;返回主页
+								<i class='fas fa-clock fa-fw'></i>&nbsp;主页
 							</a>
             </li>
           
@@ -158,7 +180,7 @@
                 
                 
                 id="archives">
-								<i class='fas fa-archive fa-fw'></i>&nbsp;存档文章
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章
 							</a>
             </li>
           
@@ -167,18 +189,18 @@
                 
                 
                 id="https:github.comintptrzero">
-								<i class='fas fa-code-branch fa-fw'></i>&nbsp;开源项目
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
 							</a>
             </li>
           
             <li>
-							<a class="nav flat-box" href="/friends/"
+							<a class="nav flat-box" href="/links/"
                 
                   rel="nofollow"
                 
                 
-                id="friends">
-								<i class='fas fa-bookmark fa-fw'></i>&nbsp;推荐博客
+                id="links">
+								<i class='fas fa-bookmark fa-fw'></i>&nbsp;推荐
 							</a>
             </li>
           
@@ -189,7 +211,7 @@
                 
                 
                 id="about">
-								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于本站
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
 							</a>
             </li>
           
@@ -258,6 +280,14 @@
       <div class="social-wrapper">
         
           
+            <a href="https://github.com/intptrzero"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
             <a href="https://leetcode-cn.com/u/intptr/"
               class="social fas fa-code flat-btn"
               target="_blank"
@@ -268,14 +298,6 @@
           
             <a href="mailto:hzau.yuzixiong@qq.com"
               class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://github.com/intptrzero"
-              class="social fab fa-github flat-btn"
               target="_blank"
               rel="external nofollow noopener noreferrer">
             </a>
@@ -308,7 +330,7 @@
 </header>
 
   <div class='content pure'>
-    <p>暂无公告~</p>
+    <p>博客界面重写，评论系统切换为Gitalk，文章将逐步恢复访问。  <div style="text-align:right"> –2019/08/20</div></p>
 
   </div>
 </section>
@@ -370,7 +392,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/tag/" style="font-size: 14px; color: #999">tag</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a>
+      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a>
     </div>
   </section>
 
@@ -406,7 +428,7 @@
       
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
   <div class="aplayer"
-    data-theme="rgba(240,240,240,0.6)"
+    data-theme="#1BCDFC"
     
     
     data-mode="circulation"
@@ -480,6 +502,14 @@
     <div class="social-wrapper">
       
         
+          <a href="https://github.com/intptrzero"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
           <a href="https://leetcode-cn.com/u/intptr/"
             class="social fas fa-code flat-btn"
             target="_blank"
@@ -490,14 +520,6 @@
         
           <a href="mailto:hzau.yuzixiong@qq.com"
             class="social fas fa-envelope flat-btn"
-            target="_blank"
-            rel="external nofollow noopener noreferrer">
-          </a>
-        
-      
-        
-          <a href="https://github.com/intptrzero"
-            class="social fab fa-github flat-btn"
             target="_blank"
             rel="external nofollow noopener noreferrer">
           </a>
@@ -540,8 +562,10 @@
     
   </div>
   <div>
+  Powered by Github and MarkdownPad 2
   </div>
-  <div>---------- 别拉了，我是有底线的>_< ----------</div>
+  <br>
+  <div>--------------------------- 别拉了，我是有底线的>_< ---------------------------</div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
 
@@ -606,16 +630,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
     <script type="text/javascript">
       $(function(){
-        if ('.cover') {
-          $('.cover').backstretch(
-          ["/images/back.jpg"],
+        if ('') {
+          $('').backstretch(
+          ["/images/back.jpg", "/images/back1.jpg", "/images/back2.jpg"],
           {
             duration: "6000",
             fade: "2500"
           });
         } else {
           $.backstretch(
-          ["/images/back.jpg"],
+          ["/images/back.jpg", "/images/back1.jpg", "/images/back2.jpg"],
           {
             duration: "6000",
             fade: "2500"
