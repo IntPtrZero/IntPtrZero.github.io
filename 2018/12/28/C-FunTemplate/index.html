@@ -339,7 +339,7 @@
 <h3 id="显式实例化与具体化"><a href="#显式实例化与具体化" class="headerlink" title="显式实例化与具体化"></a>显式实例化与具体化</h3><p>模板只能解决“普遍情况”下的重载问题，对于特殊参数类型，例如实现指针的加法(虽然没有意义)，通用模板就无法工作，因为指针没有重载加法操作符。为了解决类似的“具体”问题，需要为对应的参数类型实现“具体化”的模板定义：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;&gt; <span class="function"><span class="keyword">int</span>* <span class="title">add</span><span class="params">(<span class="keyword">int</span>* pint1, <span class="keyword">int</span>* pint2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (<span class="keyword">int</span>*)((<span class="keyword">int</span>)pint1 + (<span class="keyword">int</span>)pint2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>显而易见，具体化的模板优先级高于普通模板。如果在同一编译单元同时存在签名相同的显式实例化与具体化，且<font color="red"><strong>显式实例化在具体化之前</strong></font>，则会引发重复定义错误，原因是编译器显式实例化生成了函数实例，但接下来的语句出现了优先级更高的具体化模板，编译器尝试以具体化模板生成函数实例，但已存在相同签名的函数实例，因此引发错误。反之编译器先以具体化模板为原型生成函数实例，则会跳过优先级较低的显式实例化，编译通过。</p>
+<p>显而易见，具体化的模板优先级高于普通模板。如果在同一编译单元同时存在签名相同的显式实例化与具体化，且<strong>显式实例化在具体化之前</strong>，则会引发重复定义错误，原因是编译器显式实例化生成了函数实例，但接下来的语句出现了优先级更高的具体化模板，编译器尝试以具体化模板生成函数实例，但已存在相同签名的函数实例，因此引发错误。反之编译器先以具体化模板为原型生成函数实例，则会跳过优先级较低的显式实例化，编译通过。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通用模板</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">add</span><span class="params">(T arg1, T arg2)</span></span>;</span><br><span class="line"><span class="comment">//a.显式实例化</span></span><br><span class="line"><span class="function"><span class="keyword">template</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">int</span>)</span></span>;</span><br><span class="line"><span class="comment">//b.相同签名的具体化模板</span></span><br><span class="line"><span class="keyword">template</span>&lt;&gt; <span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">int</span>)</span></span>;</span><br><span class="line"><span class="comment">//交换ab的次序则编译通过</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a=<span class="number">1</span>,b=<span class="number">2</span>;</span><br><span class="line">	add(a,b);	<span class="comment">//使用该签名的函数引发重复定义</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//模板定义</span></span><br><span class="line"><span class="comment">/*.........</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="函数调用优先级"><a href="#函数调用优先级" class="headerlink" title="函数调用优先级"></a>函数调用优先级</h3><p>如果同时存在<strong>相同签名</strong>的非模板函数、普通模板、具体化模板，则非模板 &gt;具体化模板 &gt;普通模板。调用时也可以指定使用模板函数，此时只考虑模板的优先级。</p>
@@ -357,7 +357,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-08-31T11:09:48+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-08-31T22:09:47+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
     <p>最后更新于 2019年8月31日</p>
@@ -379,6 +379,30 @@
 
 
         
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/02/28/Leetcode-2sum/" rel="prev" title="Leetcode - 两数之和">
+                                  
+                                      Leetcode - 两数之和
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/算法/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>算法</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+            </div>
         
       </section>
     </article>
@@ -434,7 +458,7 @@
   <div class='content pure'>
     
       <div class='avatar'>
-        <img class='avatar' src='/images/logo.jpg'/>
+        <img class='avatar' src='/images/logo.png'/>
       </div>
     
     
@@ -525,6 +549,8 @@
         
           <li><a class="flat-box" title="/categories/C/" href="/categories/C/"><div class='name'>C++</div><div class='badge'>(1)</div></a></li>
         
+          <li><a class="flat-box" title="/categories/LeetCode/" href="/categories/LeetCode/"><div class='name'>LeetCode</div><div class='badge'>(1)</div></a></li>
+        
       </ul>
     </div>
   </section>
@@ -554,7 +580,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a>
+      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a> <a href="/tags/算法/" style="font-size: 14px; color: #999">算法</a>
     </div>
   </section>
 
@@ -796,14 +822,14 @@
           $('').backstretch(
           ["/images/back.jpg", "/images/back1.jpg", "/images/back2.jpg"],
           {
-            duration: "6000",
+            duration: "10000",
             fade: "2500"
           });
         } else {
           $.backstretch(
           ["/images/back.jpg", "/images/back1.jpg", "/images/back2.jpg"],
           {
-            duration: "6000",
+            duration: "10000",
             fade: "2500"
           });
         }

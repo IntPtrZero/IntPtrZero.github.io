@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>关于 | IntPtr.Zero</title>
+  <title>Leetcode - 两数之和 | IntPtr.Zero</title>
   
   
   <meta name="description" content="Code and Learn">
@@ -47,7 +47,7 @@
 <body>
   
   
-  <header class="l_header no_sidebar pure">
+  <header class="l_header pure">
   <div id="loading-bar-wrapper">
     <div id="loading-bar" class="pure"></div>
   </div>
@@ -152,6 +152,8 @@
 			<ul class='switcher h-list'>
 				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
         
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
 			</ul>
 		</div>
 	</div>
@@ -224,11 +226,11 @@
 
   <div class="l_body nocover">
     <div class='body-wrapper'>
-      <div class='l_main no_sidebar'>
+      <div class='l_main'>
   
 
   
-    <article id="page" class="post white-box article-type-page" itemscope itemprop="blogPost">
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
       
 
 
@@ -240,8 +242,8 @@
         
   
     <h1 class="title">
-      <a href="/about/index.html">
-        关于
+      <a href="/2019/02/28/Leetcode-2sum/">
+        Leetcode - 两数之和
       </a>
     </h1>
   
@@ -270,7 +272,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-08-31</p>
+    <p>2019-02-28</p>
   </a>
 </div>
 
@@ -278,6 +280,14 @@
         
           
             
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/LeetCode/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>LeetCode</p>
+    </a>
+  </div>
+
 
           
         
@@ -314,41 +324,77 @@
 
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
-          <div>
-<ul class="pure circle center about">
-<li>
-<img src="/images/logo.jpg">
-</li>
-</ul>
-</div>
-<div style="text-align:center">
-<a href="https://github.com/intptrzero" target="_blank" rel="noopener">
-<i class="fab fa-github"></i>
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://leetcode-cn.com/u/intptr/" target="_blank" rel="noopener">
-<i class="fas fa-code"></i>
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="mailto:hzau.yuzixiong@qq.com" target="_blank" rel="noopener">
-<i class="fas fa-envelope"></i>
-</a>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="https://music.163.com/#/user/home?id=295901484" target="_blank" rel="noopener">
-<i class="fas fa-headphones-alt"></i>
-</a>
-</div>
-<hr>
-<br>
-<center>
-兴趣广泛，专注Windows平台，主要使用C++/.NET，喜欢研究底层。破解爱好者
-</center>
-<br><hr><br>
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/add-two-numbers" target="_blank" rel="noopener">题目</a></h3><p>给出两个非空的链表用来表示两个非负的整数。其中，它们各自的位数是按照<strong>逆序</strong>的方式存储的，并且它们的每个节点只能存储一位数字。如果我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。你可以假设除了数字 0 之外，这两个数都不会以 0 开头。  </p>
+<a id="more"></a>
 
-<h3 id="关于博客"><a href="#关于博客" class="headerlink" title="关于博客"></a>关于博客</h3><p>本站使用 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> 主题 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" rel="noopener">Material X</a><br>感谢 <a href="https://github.com" target="_blank" rel="noopener">Github</a> 提供的空间支持以及 <a href="https://gitalk.github.io/" target="_blank" rel="noopener">Gitalk</a> 评论插件<br>Gitalk表情食用方法：查看Gitalk支持的<a href="https://github.com/ikatyang/emoji-cheat-sheet/blob/master/README.md" target="_blank" rel="noopener">emoji</a>列表，在评论框输入对应代码即可◕‿-<br><br><hr><br><br>欢迎交流、分享与评论</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ol>
+<li><p>先将两数相加，再提取各位数字组成新链表。<br> 优点：代码简单<br> 缺点：无法用于大数计算</p>
+</li>
+<li><p>边遍历边相加，同时构建链表节点。需要考虑进位问题。</p>
+</li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">ListNode* L3 = L2;</span><br><span class="line">ListNode* cur=<span class="literal">nullptr</span>;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">short</span> val = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (L2 || L1)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (L2)</span><br><span class="line">	&#123;</span><br><span class="line">		cur = L2;		<span class="comment">//保存当前位置</span></span><br><span class="line">		val = cur-&gt;val + flag;</span><br><span class="line">		L2 = L2-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		cur-&gt;next = L1;	<span class="comment">//L2比L1短，直接链接到L1</span></span><br><span class="line">		cur = L1;</span><br><span class="line">		val = flag;</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">if</span> (L1)</span><br><span class="line">	&#123;</span><br><span class="line">		val += L1-&gt;val;</span><br><span class="line">		L1 = L1-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cur-&gt;val = val % <span class="number">10</span>;</span><br><span class="line">	(val &gt; <span class="number">9</span>) ? flag = <span class="number">1</span> : flag = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (L1 == <span class="number">0</span> &amp;&amp; L2 == <span class="number">0</span> &amp;&amp; flag == <span class="number">1</span>)</span><br><span class="line">	cur-&gt;next = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">return</span> L3;</span><br></pre></td></tr></table></figure>
+
+<h4 id="CSharp"><a href="#CSharp" class="headerlink" title="CSharp"></a>CSharp</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> val = <span class="number">0</span>;</span><br><span class="line">ListNode L3=L2;</span><br><span class="line">ListNode cur=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">while</span>( L2!=<span class="literal">null</span>|| L1!=<span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(L2!=<span class="literal">null</span>)</span><br><span class="line">	&#123;</span><br><span class="line">	cur = L2;</span><br><span class="line">	val = cur.val+flag;</span><br><span class="line">	L2 = L2.next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">	cur.next = L1;</span><br><span class="line">	cur = L1;</span><br><span class="line">	val = flag;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(L1!=<span class="literal">null</span>)</span><br><span class="line">	&#123;</span><br><span class="line">	val += L1.val;</span><br><span class="line">	L1 = L1.next;</span><br><span class="line">	&#125;</span><br><span class="line">	cur.val = val % <span class="number">10</span>;</span><br><span class="line">	flag = val &gt; <span class="number">9</span> ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (L1 == <span class="literal">null</span> &amp;&amp; L2 == <span class="literal">null</span> &amp;&amp; flag == <span class="number">1</span>)</span><br><span class="line">	cur.next = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">return</span> L3;</span><br></pre></td></tr></table></figure>
+
+<p>考查点：<strong>单链表</strong>、<strong>大数计算</strong></p>
 
         </div>
         
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-01T11:52:47+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年9月1日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/算法/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>算法</p></a></div>
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2018/12/28/C-FunTemplate/" rel="prev" title="C++模板与泛型 - 函数模板">
+                                    
+                                        C++模板与泛型 - 函数模板
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>C++</a> <a class="tag" href="/tags/泛型/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>泛型</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
         
       </section>
     </article>
@@ -382,6 +428,13 @@
 <!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
 
 
+
+  <script>
+    window.subData = {
+      title: 'Leetcode - 两数之和',
+      tools: true
+    }
+  </script>
 
 
 </div>
