@@ -343,7 +343,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通用模板</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">add</span><span class="params">(T arg1, T arg2)</span></span>;</span><br><span class="line"><span class="comment">//a.显式实例化</span></span><br><span class="line"><span class="function"><span class="keyword">template</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">int</span>)</span></span>;</span><br><span class="line"><span class="comment">//b.相同签名的具体化模板</span></span><br><span class="line"><span class="keyword">template</span>&lt;&gt; <span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">int</span>)</span></span>;</span><br><span class="line"><span class="comment">//交换ab的次序则编译通过</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a=<span class="number">1</span>,b=<span class="number">2</span>;</span><br><span class="line">	add(a,b);	<span class="comment">//使用该签名的函数引发重复定义</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//模板定义</span></span><br><span class="line"><span class="comment">/*.........</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="函数调用优先级"><a href="#函数调用优先级" class="headerlink" title="函数调用优先级"></a>函数调用优先级</h3><p>如果同时存在<strong>相同签名</strong>的非模板函数、普通模板、具体化模板，则非模板 &gt;具体化模板 &gt;普通模板。调用时也可以指定使用模板函数，此时只考虑模板的优先级。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a=<span class="number">1</span>,b=<span class="number">2</span>;</span><br><span class="line">	add&lt;<span class="keyword">int</span>&gt;(a,b);	<span class="comment">//省略int将自动推断</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a=<span class="number">1</span>,b=<span class="number">2</span>;</span><br><span class="line">	add&lt;<span class="keyword">int</span>&gt;(a,b);	<span class="comment">//强制使用模板。省略int将自动推断</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><em>以上代码测试结果来自VS2013</em></p>
 
@@ -357,10 +357,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-08-31T22:09:47+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-01T21:44:13+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2019年8月31日</p>
+    <p>最后更新于 2019年9月1日</p>
   </a>
 </div>
 
@@ -386,7 +386,7 @@
                         <span class="art-item-left">
                             <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
                             <h4>
-                                <a href="/2019/02/28/Leetcode-2sum/" rel="prev" title="Leetcode - 两数之和">
+                                <a href="/2019/02/28/Leetcode-2Sum/" rel="prev" title="Leetcode - 两数之和">
                                   
                                       Leetcode - 两数之和
                                   
@@ -549,7 +549,9 @@
         
           <li><a class="flat-box" title="/categories/C/" href="/categories/C/"><div class='name'>C++</div><div class='badge'>(1)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/LeetCode/" href="/categories/LeetCode/"><div class='name'>LeetCode</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/LeetCode/" href="/categories/LeetCode/"><div class='name'>LeetCode</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/算法/" href="/categories/算法/"><div class='name'>算法</div><div class='badge'>(1)</div></a></li>
         
       </ul>
     </div>
@@ -580,7 +582,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a> <a href="/tags/算法/" style="font-size: 14px; color: #999">算法</a>
+      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/动态规划/" style="font-size: 19px; color: #777">动态规划</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a> <a href="/tags/算法/" style="font-size: 24px; color: #555">算法</a>
     </div>
   </section>
 
@@ -642,7 +644,7 @@
             <section class='widget list'>
   
 <header class='pure'>
-  <div><i class="fas fa-link fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;相关链接</div>
+  <div><i class="fas fa-link fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;在线文档</div>
   
 </header>
 
