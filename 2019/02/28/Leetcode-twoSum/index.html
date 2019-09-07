@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Archives: 2019/3 | IntPtr.Zero</title>
+  <title>Leetcode - 两数之和 | IntPtr.Zero</title>
   
   
   <meta name="description" content="Code and Learn">
@@ -227,22 +227,11 @@
   <div class="l_body nocover">
     <div class='body-wrapper'>
       <div class='l_main'>
-	
-		
-  <section class="post-list">
-    
-      
-        
-          
-        
-      
-    
-    
-      
-        
-          <div class='post-wrapper'>
-            <article class="post reveal ">
   
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
 
 
   <section class='meta'>
@@ -251,11 +240,13 @@
     <div class="meta" id="header-meta">
       
         
-  <h2 class="title">
-    <a href="/2019/03/14/DP-zoPack/">
-      动态规划 - 背包问题
-    </a>
-  </h2>
+  
+    <h1 class="title">
+      <a href="/2019/02/28/Leetcode-twoSum/">
+        Leetcode - 两数之和
+      </a>
+    </h1>
+  
 
 
       
@@ -281,7 +272,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-03-14</p>
+    <p>2019-02-28</p>
   </a>
 </div>
 
@@ -291,9 +282,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/算法/' rel="nofollow">
+    <a href='/categories/LeetCode/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>算法</p>
+      <p>LeetCode</p>
     </a>
   </div>
 
@@ -302,6 +293,19 @@
         
           
             
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
 
           
         
@@ -318,45 +322,140 @@
   </section>
 
 
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>有一个背包，最大容量为P，现有数量为S的一堆物品，其大小和价值各不相同，求如何保证背包所装物品价值最高。物品大小与价值由数组w[S]和v[S]给出。  </p>
-      
-        <div class="readmore">
-          <a href="/2019/03/14/DP-zoPack/" class="flat-box">
-            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
-            阅读全文
-          </a>
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a><a href="https://leetcode-cn.com/problems/add-two-numbers" target="_blank" rel="noopener">问题</a></h3><p>给出两个非空的链表用来表示两个非负的整数。其中，它们各自的位数是按照<strong>逆序</strong>的方式存储的，并且它们的每个节点只能存储一位数字。如果我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。你可以假设除了数字 0 之外，这两个数都不会以 0 开头。  </p>
+<a id="more"></a>
+
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ol>
+<li><p>先将两数相加，再提取各位数字组成新链表。<br> 优点：代码简单<br> 缺点：无法用于大数计算</p>
+</li>
+<li><p>边遍历边相加，同时构建链表节点。需要考虑进位问题。</p>
+</li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">ListNode* L3 = L2;</span><br><span class="line">ListNode* cur=<span class="literal">nullptr</span>;</span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">short</span> val = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (L2 || L1)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (L2)</span><br><span class="line">	&#123;</span><br><span class="line">		cur = L2;		<span class="comment">//保存当前位置</span></span><br><span class="line">		val = cur-&gt;val + flag;</span><br><span class="line">		L2 = L2-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		cur-&gt;next = L1;	<span class="comment">//L2比L1短，直接链接到L1</span></span><br><span class="line">		cur = L1;</span><br><span class="line">		val = flag;</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">	<span class="keyword">if</span> (L1)</span><br><span class="line">	&#123;</span><br><span class="line">		val += L1-&gt;val;</span><br><span class="line">		L1 = L1-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cur-&gt;val = val % <span class="number">10</span>;</span><br><span class="line">	(val &gt; <span class="number">9</span>) ? flag = <span class="number">1</span> : flag = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (L1 == <span class="number">0</span> &amp;&amp; L2 == <span class="number">0</span> &amp;&amp; flag == <span class="number">1</span>)</span><br><span class="line">	cur-&gt;next = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">return</span> L3;</span><br></pre></td></tr></table></figure>
+
+<h4 id="CSharp"><a href="#CSharp" class="headerlink" title="CSharp"></a>CSharp</h4><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> val = <span class="number">0</span>;</span><br><span class="line">ListNode L3=L2;</span><br><span class="line">ListNode cur=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line"><span class="keyword">while</span>( L2!=<span class="literal">null</span>|| L1!=<span class="literal">null</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span>(L2!=<span class="literal">null</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		cur = L2;</span><br><span class="line">		val = cur.val+flag;</span><br><span class="line">		L2 = L2.next;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		cur.next = L1;</span><br><span class="line">		cur = L1;</span><br><span class="line">		val = flag;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(L1!=<span class="literal">null</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		val += L1.val;</span><br><span class="line">		L1 = L1.next;</span><br><span class="line">	&#125;</span><br><span class="line">	cur.val = val % <span class="number">10</span>;</span><br><span class="line">	flag = val &gt; <span class="number">9</span> ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (L1 == <span class="literal">null</span> &amp;&amp; L2 == <span class="literal">null</span> &amp;&amp; flag == <span class="number">1</span>)</span><br><span class="line">	cur.next = <span class="keyword">new</span> ListNode(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">return</span> L3;</span><br></pre></td></tr></table></figure>
+
+<p>考查点：<strong>单链表</strong>、<strong>大数计算</strong></p>
+
         </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-01T21:39:56+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年9月1日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/算法/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>算法</p></a></div>
+
+
+        
       
     </div>
-    
-      <div class="full-width auto-padding tags">
-        
-          <a href="/tags/算法/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>算法</a>
-        
-          <a href="/tags/动态规划/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>动态规划</a>
-        
-      </div>
-    
   </section>
-</article>
 
-          </div>
+
         
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/03/14/DP-zoPack/" rel="prev" title="动态规划 - 背包问题">
+                                  
+                                      动态规划 - 背包问题
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/算法/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>算法</a> <a class="tag" href="/tags/动态规划/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>动态规划</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2018/12/28/C-FunTemplate/" rel="prev" title="C++模板与泛型 - 函数模板">
+                                    
+                                        C++模板与泛型 - 函数模板
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>C++</a> <a class="tag" href="/tags/泛型/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>泛型</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
       
-    
-  </section>
-  
-    
-    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-    
-    
+      
+      
+        <section id="comments">
+          <div id="gitalk-container"></div>
+        </section>
+      
+      
+    </section>
+  </article>
+
 
   
 
 
-	
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'Leetcode - 两数之和',
+      tools: true
+    }
+  </script>
+
+
 </div>
 <aside class='l_side'>
   
@@ -672,14 +771,6 @@
 <script>setLoadingBarProgress(80);</script>
 
 
-
-
-	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
-	
-
-	
-
-
       <script>setLoadingBarProgress(60);</script>
     </div>
     <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
@@ -764,6 +855,24 @@
 
 
 
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: "3df74de60feed2ce1724",
+      clientSecret: "bc3dba6ff0042f1cce4eeee8b596894dc2856ef0",
+      repo: "IntPtrZero.github.io",
+      owner: "intptrzero",
+      admin: "intptrzero",
+      
+        id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+      
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+    gitalk.render('gitalk-container');
+  </script>
 
 
 
