@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>STL - Deque | IntPtr.Zero</title>
+  
+  
+  <meta name="description" content="Code and Learn">
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/images/fav.ico">
+  
+
+  
+    <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          IntPtr.Zero
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-home fa-fw'></i>&nbsp;主页
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-tags fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;存档
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/links/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="links">
+									<i class='fas fa-bookmark fa-fw'></i>&nbsp;推荐
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/about/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="about">
+									<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;主页
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://github.com/intptrzero"
+                
+                
+                id="https:github.comintptrzero">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/links/"
+                
+                  rel="nofollow"
+                
+                
+                id="links">
+								<i class='fas fa-bookmark fa-fw'></i>&nbsp;推荐
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/07/03/STL-Deque/">
+        STL - Deque
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="https://intptrzero.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>IntPtr.Zero</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-07-03</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/C/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>C++</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <h3 id="双端队列简介"><a href="#双端队列简介" class="headerlink" title="双端队列简介"></a>双端队列简介</h3><p>顾名思义，deque支持在头尾进行插入删除操作。类似于vector和array，deque也是顺序存储结构，没有了解过deque的人在主观上可能会以为deque与vector底层结构类似，实际上为了支持头部插入与删除操作，deque采用<strong>分段连续存储</strong>的数据结构，因此实现上比vector复杂得多。因为采用分段设计，deque的迭代器效率比vector低。<br>为了管理片段，STL的deque在内部定义了一个_Map成员，_Map底层实际是一个T**，也可以将_Map看作一个数组，每一个数组元素指向内存中的一段连续的元素存储空间</p>
+<a id="more"></a>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//VS2013 deque节选</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> _<span class="title">Ty</span>&gt;</span></span><br><span class="line"><span class="class">	<span class="title">struct</span> _<span class="title">Deque_simple_types</span></span></span><br><span class="line"><span class="class">		:</span> <span class="keyword">public</span> _Simple_types&lt;_Ty&gt;</span><br><span class="line">	&#123;	<span class="comment">// wraps types needed by iterators</span></span><br><span class="line">	<span class="keyword">typedef</span> _Ty **_Mapptr;</span><br><span class="line">	&#125;;</span><br><span class="line"></span><br><span class="line">_Mapptr _Map;</span><br></pre></td></tr></table></figure>
+
+<h3 id="双端队列的迭代器"><a href="#双端队列的迭代器" class="headerlink" title="双端队列的迭代器"></a>双端队列的迭代器</h3><p>deque分类上属于顺序存储容器，因此迭代器理所应当提供随机访问迭代器的所有功能。但在内部deque是分段的，因此迭代器需要知道片段的大小以及片段的地址，以在到达片段边缘时跳转到另一个片段。SGI的实现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T,<span class="keyword">typename</span> Ref,<span class="keyword">typename</span> Ptr,<span class="keyword">size_t</span> BufSize&gt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> _<span class="title">deque_iterator</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="comment">//省略traits定义</span></span><br><span class="line">	<span class="keyword">typedef</span> T** map_pointer;</span><br><span class="line">	<span class="keyword">typedef</span> _deque_iterator self;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//每一个片段的元素容量，如果不指定，默认为512/sizeof(T)</span></span><br><span class="line">	<span class="function"><span class="keyword">static</span> size_t <span class="title">buffer_size</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">	</span><br><span class="line">	T*  cur;			<span class="comment">//指向片段的当前可插入位置</span></span><br><span class="line">	T* first;			<span class="comment">//指向片段的头部</span></span><br><span class="line">	T* last;			<span class="comment">//指向片段的超尾</span></span><br><span class="line">	map_pointer node;	<span class="comment">//节点</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//设置节点</span></span><br><span class="line">	set_node(map_pointer new_node)</span><br><span class="line">	&#123;</span><br><span class="line">		node=new_node;</span><br><span class="line">		first=*new_node;</span><br><span class="line">		last=first+difference_type(buffer_size());</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//迭代器之间的减法</span></span><br><span class="line">	difference_type <span class="keyword">operator</span>-(self&amp; x) <span class="keyword">const</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> difference_type(buffer_size())*(node-x.node<span class="number">-1</span>)+(cur-first)+(x.last-x.cur);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	self&amp; <span class="keyword">operator</span>++()</span><br><span class="line">	&#123;</span><br><span class="line">		++cur;</span><br><span class="line">		<span class="keyword">if</span>(cur==last)			<span class="comment">//到达当前片段超尾</span></span><br><span class="line">		&#123;</span><br><span class="line">			set_node(node+<span class="number">1</span>);	<span class="comment">//跳转到下一片段</span></span><br><span class="line">			cur=first;			<span class="comment">//指向头部</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//自减操作类似，略过</span></span><br><span class="line"></span><br><span class="line">	self&amp; <span class="keyword">operator</span>+=(difference_type n)</span><br><span class="line">	&#123;</span><br><span class="line">		difference_type offset=n+cur-first;</span><br><span class="line">		<span class="comment">//判断是否在同一片段内偏移</span></span><br><span class="line">		<span class="keyword">if</span>(offset&gt;=<span class="number">0</span> &amp;&amp; offset&lt;difference_type(buffer_size()))</span><br><span class="line">			cur+=n;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				difference_type node_offset=offset&gt;<span class="number">0</span> ? offset/difference(buffer_size()):-difference_type((-offset<span class="number">-1</span>)/buffer_size())<span class="number">-1</span>;</span><br><span class="line">				set_node(node+node_offset);</span><br><span class="line">				cur=first+offset-node_offset*difference_type(buffer_size());</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//省略其它操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="双端队列的结构"><a href="#双端队列的结构" class="headerlink" title="双端队列的结构"></a>双端队列的结构</h3><p><img src="/images/assets/deque.jpg" alt="deque结构图"><br>SGI的deque结构如上图所示，其具体实现见代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基础成员</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T,<span class="keyword">typename</span> Alloc=alloc,<span class="keyword">size_t</span> BuffSize=<span class="number">0</span>&gt;</span><br><span class="line">class <span class="built_in">deque</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">typedef</span> _deque_iterator&lt;T,T&amp;,T*,BuffSize&gt; iterator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">	<span class="keyword">typedef</span> pointer* map_pointer;</span><br><span class="line"></span><br><span class="line">	iterator start;		<span class="comment">//头部迭代器</span></span><br><span class="line">	iterator finish;	<span class="comment">//尾部迭代器</span></span><br><span class="line">	map_pointer <span class="built_in">map</span>;	<span class="comment">//map</span></span><br><span class="line">	size_type map_size;	<span class="comment">//节点数量</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//头部迭代器</span></span><br><span class="line">	<span class="function">iterator <span class="title">begin</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> start;&#125;</span><br><span class="line">	<span class="comment">//尾部迭代器</span></span><br><span class="line">	<span class="function">iterator <span class="title">end</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> finish;&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//首元素</span></span><br><span class="line">	<span class="function">reference <span class="title">front</span><span class="params">()</span> </span>&#123;<span class="keyword">return</span> *start;&#125;</span><br><span class="line">	<span class="comment">//尾元素</span></span><br><span class="line">	<span class="function">reference <span class="title">back</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		iterator tmp=finish;</span><br><span class="line">		--tmp;</span><br><span class="line">		<span class="keyword">return</span> *tmp;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//略过其它常用接口</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意deque迭代器取值操作符返回*cur，start迭代器的cur总是指向首元素，finish迭代器的cur指向最后一个元素的下一位，因此需要前移。  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造函数</span></span><br><span class="line"><span class="built_in">deque</span>(<span class="keyword">int</span> n,<span class="keyword">const</span> value_type&amp; value):start(),finish(),<span class="built_in">map</span>(<span class="number">0</span>),map_size(<span class="number">0</span>)</span><br><span class="line">&#123;</span><br><span class="line">	fill_initialize(n,value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T,<span class="keyword">typename</span> Alloc,<span class="keyword">size_t</span> BuffSize&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fill_initialize</span><span class="params">(size_type n,<span class="keyword">const</span> value_type&amp; value)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	create_map_and_nodes(n);</span><br><span class="line">	map_pointer cur;</span><br><span class="line">	<span class="keyword">for</span>(cur=start.node;cur&lt;finish.node;++cur)</span><br><span class="line">		uninitialized_fill(*cur,*cur+buffer_size(),value);</span><br><span class="line">	<span class="comment">//尾部片段可能还有空闲，因此单独初始化</span></span><br><span class="line">	uninitialized_fill(finish.first,finish.cur,value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T,<span class="keyword">typename</span> Alloc,<span class="keyword">size_t</span> BuffSize&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">create_map_and_nodes</span><span class="params">(size_type num_element)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//计算初始需要分配的节点数，如果刚好占满n个片段，则额外加一</span></span><br><span class="line">	size_type num_nodes=num_element/buffer_size()+<span class="number">1</span>;</span><br><span class="line">	<span class="comment">//初始节点数，最少为8。首尾各增加一个以供备用</span></span><br><span class="line">	map_size=max(<span class="number">8</span>,num_nodes+<span class="number">2</span>);</span><br><span class="line">	<span class="comment">//为map分配内存保存节点</span></span><br><span class="line">	<span class="built_in">map</span>=map_allocator::allocate(map_size);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//使初始占用的空间尽量居中，便于首尾插入</span></span><br><span class="line">	map_pointer nstart=<span class="built_in">map</span>+(map_size-num_nodes)/<span class="number">2</span>;</span><br><span class="line">	map_pointer nfinish=nstart+num_nodes<span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">	map_pointer cur;</span><br><span class="line">	<span class="comment">//为片段分配空间</span></span><br><span class="line">	<span class="keyword">for</span>(cur=nstart;cur&lt;=nfinish;++cur)</span><br><span class="line">		*cur=allocate_node();</span><br><span class="line"></span><br><span class="line">	start.set_node(nstart);</span><br><span class="line">	finish.set_node(nfinish);</span><br><span class="line">	start.cur=start.first;</span><br><span class="line">	finish.cur=finish.first+num_element%buffer_size();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再来看看deque在内部如何处理元素插入，以push_back为例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push_back</span><span class="params">(<span class="keyword">const</span> value_type&amp; t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//如果尾片段空余空间大于1，则直接赋值</span></span><br><span class="line">	<span class="keyword">if</span>(finish.cur != finish.last <span class="number">-1</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		construct(finish.cur,t);</span><br><span class="line">		++finish.cur;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//否则新分配一个片段</span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		push_back_aux(t);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push_back_aux</span><span class="params">(<span class="keyword">const</span> value_type&amp; t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	value_type t_copy=t;</span><br><span class="line">	<span class="comment">//判断是否需要重新分配map</span></span><br><span class="line">	reserve_map_at_back();</span><br><span class="line">	<span class="comment">//为下一个节点分配一个片段</span></span><br><span class="line">	*(finish.node+<span class="number">1</span>)=alocate_node();</span><br><span class="line">	<span class="comment">//现在finish所指的片段已满</span></span><br><span class="line">	construct(finish.cur,t_copy);</span><br><span class="line">	<span class="comment">//尾迭代器指向下一个片段</span></span><br><span class="line">	finish.set_node(finish.node+<span class="number">1</span>);</span><br><span class="line">	finish.cur=finish.first;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断尾部是否需要重新分配</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reserve_map_at_back</span><span class="params">(size_type node_to_add=<span class="number">1</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//尾部备用空间不足</span></span><br><span class="line">	<span class="keyword">if</span>(node_to_add&gt;map_size-(finish.node-<span class="built_in">map</span>)<span class="number">-1</span>)</span><br><span class="line">		<span class="comment">//false尾部分配</span></span><br><span class="line">		reallocate_map(node_to_add,<span class="literal">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//头部操作类似，略过</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">reallocate_map</span><span class="params">(size_type node_to_add,<span class="keyword">bool</span> add_at_front)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	size_type old_num_nodes=finish.node-start.node+<span class="number">1</span>;</span><br><span class="line">	size_type new_num_nodes=old_num_nodes+node_to_add;</span><br><span class="line">	map_pointer new_nstart;</span><br><span class="line">	<span class="comment">//对应于一端插入，另一端删除时的极端情况，此时map中只有后半段的节点被利用，不需要重新申请更大的map</span></span><br><span class="line">	<span class="keyword">if</span>(map_size&gt;<span class="number">2</span>*new_num_nodes)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//重新安排头部节点到中间</span></span><br><span class="line">		new_nstart=<span class="built_in">map</span>+(map_size-new_num_nodes)/<span class="number">2</span>+(add_at_front?node_to_add:<span class="number">0</span>);</span><br><span class="line">		<span class="keyword">if</span>(new_nstart&lt;start.node)</span><br><span class="line">			<span class="comment">//先序复制防止左边被覆盖</span></span><br><span class="line">			copy(start.node,finish.node+<span class="number">1</span>,new_nstart);</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			<span class="comment">//后序复制防止右边被覆盖</span></span><br><span class="line">			copy_backward(start.node,finish.node+<span class="number">1</span>,new_nstart+old_num_nodes);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//对应正常情况，map中空余节点不足</span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		size_type new_map_size=map_size+max(map_size,node_to_add)+<span class="number">2</span>;</span><br><span class="line">		<span class="comment">//申请更大的map</span></span><br><span class="line">		map_pointer new_map=map_allocator::allocate(new_map_size);</span><br><span class="line">		<span class="comment">//开始节点居中</span></span><br><span class="line">		new_nstart=new_map+(new_map_size-new_num_nodes)/<span class="number">2</span>+(add_at_front?node_to_add:<span class="number">0</span>);</span><br><span class="line">		<span class="comment">//复制原节点</span></span><br><span class="line">		copy(start.node,finish.node+<span class="number">1</span>,new_start);</span><br><span class="line">		<span class="comment">//释放原map</span></span><br><span class="line">		map_allocator::deallocate(<span class="built_in">map</span>,map_size);</span><br><span class="line">		<span class="built_in">map</span>=new_map;</span><br><span class="line">		map_size=new_map_size;</span><br><span class="line">	&#125;</span><br><span class="line">	start.set_node(new_nstart);</span><br><span class="line">	finish.set_node(new_nstart+old_num_nodes+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>接下来是删除操作，SGI的deque在片段中没有元素时会销毁片段以节省内存，具体实现如下，以pop_back为例：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop_back</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//尾部片段有元素</span></span><br><span class="line">	<span class="keyword">if</span>(finish.cur!=finish.first)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//注意cur指向最后一个元素的下一位</span></span><br><span class="line">		--finish.cur;</span><br><span class="line">		destroy(finish.cur);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="comment">//没有元素</span></span><br><span class="line">		pop_back_aux();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop_back_aux</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//销毁这个空片段</span></span><br><span class="line">	deallocate_node(finish.first);</span><br><span class="line">	<span class="comment">//跳转到上一个节点</span></span><br><span class="line">	finish.set_node(finish.node<span class="number">-1</span>);</span><br><span class="line">	finish.cur=finish.last<span class="number">-1</span>;</span><br><span class="line">	destroy(finish.cur);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//pop_front类似，略过</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来是clear方法，该方法清除deque所有元素并将deque初始化，SGI的deque在初始状态仍会保留一个片段，代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(map_pointer node=start.node+<span class="number">1</span>;node&lt;finish.node;++node)</span><br><span class="line">	&#123;	<span class="comment">//析构元素</span></span><br><span class="line">		destroy(*node,*node+buffer_size());</span><br><span class="line">		<span class="comment">//销毁片段</span></span><br><span class="line">		deallocate(*node,buffer_size());</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//头尾不在同一个片段</span></span><br><span class="line">	<span class="keyword">if</span>(start.node!=finish.node)</span><br><span class="line">	&#123;</span><br><span class="line">		destroy(start.cur,start.last);</span><br><span class="line">		destroy(finish.first,finish.cur);</span><br><span class="line">		<span class="comment">//仅销毁尾部</span></span><br><span class="line">		deallocate(finish.first,buffer_size());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="comment">//仅析构</span></span><br><span class="line">		destroy(start.cur,finish.cur);</span><br><span class="line">	finish=start;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>基本上常见的deque操作都与上面的实现类似，注意map的操作即可。</p>
+<h3 id="MS的deque实现"><a href="#MS的deque实现" class="headerlink" title="MS的deque实现"></a>MS的deque实现</h3><p>MS与SGI的实现有较大区别，首先在deque内部成员上VS2013没有定义start和finish两个迭代器，而是定义了一个_Myoff记录头节点偏移量以及_Mysize记录元素数量：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">size_type _Myoff;</span><br><span class="line">size_type _Mysize;</span><br></pre></td></tr></table></figure>
+
+<p>在内部，deque利用_Myoff计算节点下标来访问节点：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">size_type _Getblock(size_type off) <span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//_DEQUESIZE片段长度，_Mapsize代表map的大小</span></span><br><span class="line">	<span class="keyword">return</span> ((off/_DEQUESIZE) &amp; (<span class="keyword">this</span>-&gt;_Mapsize<span class="number">-1</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其次，MS的deque采用倍增的扩展策略，即每次重新分配map时大小变为原来的2倍(初始为8，不可自定义)：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//VS2013</span></span><br><span class="line"><span class="keyword">void</span> _Growmap(size_type _Count)</span><br><span class="line">&#123;	</span><br><span class="line">	<span class="keyword">typedef</span> <span class="keyword">typename</span> _Alpty::pointer _Blockptr;</span><br><span class="line">	_Alpty _Almap(<span class="keyword">this</span>-&gt;_Getal());</span><br><span class="line">	size_type _Newsize = <span class="number">0</span> &lt; <span class="keyword">this</span>-&gt;_Mapsize ? <span class="keyword">this</span>-&gt;_Mapsize : <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (_Newsize - <span class="keyword">this</span>-&gt;_Mapsize &lt; _Count || _Newsize &lt; _DEQUEMAPSIZ)</span><br><span class="line">	&#123;	</span><br><span class="line">		<span class="comment">//size加倍</span></span><br><span class="line">		_Newsize *= <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//计算需要新增的节点数量</span></span><br><span class="line">	_Count = _Newsize - <span class="keyword">this</span>-&gt;_Mapsize;</span><br><span class="line">	<span class="comment">//计算头节点偏移</span></span><br><span class="line">	size_type _Myboff = <span class="keyword">this</span>-&gt;_Myoff / _DEQUESIZ;</span><br><span class="line">	<span class="comment">//申请新的map</span></span><br><span class="line">	_Mapptr _Newmap = _Almap.allocate(<span class="keyword">this</span>-&gt;_Mapsize + _Count);</span><br><span class="line">	<span class="comment">//新的头节点</span></span><br><span class="line">	_Mapptr _Myptr = _Newmap + _Myboff;</span><br><span class="line">	<span class="comment">//复制旧节点</span></span><br><span class="line">	_Myptr = _Uninitialized_copy(<span class="keyword">this</span>-&gt;_Map + _Myboff,<span class="keyword">this</span>-&gt;_Map + <span class="keyword">this</span>-&gt;_Mapsize,_Myptr, _Almap);	</span><br><span class="line">	<span class="comment">//如果新增节点数量大于头节点偏移</span></span><br><span class="line">	<span class="keyword">if</span> (_Myboff &lt;= _Count)</span><br><span class="line">	&#123;	</span><br><span class="line">		<span class="comment">//复制旧map头节点之前未使用的节点到新map的尾部(意义不明，应该是为了减少初始化次数)</span></span><br><span class="line">		_Myptr = _Uninitialized_copy(<span class="keyword">this</span>-&gt;_Map,<span class="keyword">this</span>-&gt;_Map + _Myboff,_Myptr, _Almap);</span><br><span class="line">		<span class="comment">//初始化剩余的尾部节点</span></span><br><span class="line">		_Uninitialized_default_fill_n(_Myptr, _Count - _Myboff,_Almap);</span><br><span class="line">		<span class="comment">//初始化头部节点	</span></span><br><span class="line">		_Uninitialized_default_fill_n(_Newmap, _Myboff, _Almap);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;	</span><br><span class="line">		<span class="comment">//复制旧map头部未使用的节点到新map尾部</span></span><br><span class="line">		_Uninitialized_copy(<span class="keyword">this</span>-&gt;_Map,<span class="keyword">this</span>-&gt;_Map + _Count,_Myptr, _Almap);	</span><br><span class="line">		<span class="comment">//复制剩余的旧map头部到新map头部</span></span><br><span class="line">		_Myptr = _Uninitialized_copy(<span class="keyword">this</span>-&gt;_Map + _Count,</span><br><span class="line">		<span class="keyword">this</span>-&gt;_Map + _Myboff,_Newmap, _Almap);	</span><br><span class="line">		<span class="comment">//初始化新map头部未能复制到的节点</span></span><br><span class="line">		_Uninitialized_default_fill_n(_Myptr, _Count, _Almap);	</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//析构旧map元素</span></span><br><span class="line">	_Destroy_range(<span class="keyword">this</span>-&gt;_Map + _Myboff, <span class="keyword">this</span>-&gt;_Map + <span class="keyword">this</span>-&gt;_Mapsize, _Almap);</span><br><span class="line">	<span class="comment">//释放旧map空间</span></span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">this</span>-&gt;_Map != _Mapptr())</span><br><span class="line">		_Almap.deallocate(<span class="keyword">this</span>-&gt;_Map,<span class="keyword">this</span>-&gt;_Mapsize);	</span><br><span class="line">	<span class="keyword">this</span>-&gt;_Map = _Newmap;	<span class="comment">// point at new</span></span><br><span class="line">	<span class="keyword">this</span>-&gt;_Mapsize += _Count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>相比起来MS的实现更加复杂化，结构层次也不明显，代码质量明显比SGI差很多。最后再吐槽一下MS神奇的变量命名方式以及各种奇葩#define。</p>
+
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-10-17T06:26:31+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年10月17日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>C++</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/STL/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>STL</p></a></div>
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/06/09/STL-Iterator/" rel="prev" title="STL - 迭代器">
+                                    
+                                        STL - 迭代器
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>C++</a> <a class="tag" href="/tags/STL/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>STL</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+        <section id="comments">
+          <div id="gitalk-container"></div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'STL - Deque',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+        
+          
+          
+            <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='/images/logo.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="https://github.com/intptrzero"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://leetcode-cn.com/u/intptr/"
+              class="social fas fa-code flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:hzau.yuzixiong@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=295901484"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+          
+        
+      
+        
+          
+          
+            <section class='widget plain'>
+  
+<header class='pure'>
+  <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;公告栏</div>
+  
+</header>
+
+  <div class='content pure'>
+    <p>博客界面重写，评论系统切换为Gitalk，文章将逐步恢复访问。  <div style="text-align:right"> –2019/08/20</div></p>
+
+  </div>
+</section>
+
+          
+        
+      
+        
+          
+          
+            
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/categories/"
+    title="/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/C/" href="/categories/C/"><div class='name'>C++</div><div class='badge'>(5)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/LeetCode/" href="/categories/LeetCode/"><div class='name'>LeetCode</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/NET/" href="/categories/NET/"><div class='name'>.NET</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/算法/" href="/categories/算法/"><div class='name'>算法</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+          
+        
+      
+        
+          
+          
+            
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/tags/"
+    title="/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/NET/" style="font-size: 16.5px; color: #888">.NET</a> <a href="/tags/C/" style="font-size: 21.5px; color: #666">C++</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/GC/" style="font-size: 14px; color: #999">GC</a> <a href="/tags/STL/" style="font-size: 19px; color: #777">STL</a> <a href="/tags/动态规划/" style="font-size: 19px; color: #777">动态规划</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a> <a href="/tags/算法/" style="font-size: 24px; color: #555">算法</a> <a href="/tags/类/" style="font-size: 14px; color: #999">类</a>
+    </div>
+  </section>
+
+
+          
+        
+      
+        
+          
+          
+            
+
+
+  <section class='widget music'>
+    
+<header class='pure'>
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
+  
+    <a class="rightBtn"
+    
+      rel="external nofollow noopener noreferrer"
+    
+    
+      target="_blank"
+    
+    href="https://music.163.com/#/user/home?id=295901484"
+    title="https://music.163.com/#/user/home?id=295901484">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme="#1BCDFC"
+    
+    
+    data-mode="circulation"
+    data-server="netease"
+    data-type="playlist"
+    data-id="409467289"
+    data-volume="0.2">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+          
+        
+      
+        
+          
+          
+            <section class='widget list'>
+  
+<header class='pure'>
+  <div><i class="fas fa-link fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;在线文档</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://docs.microsoft.com/zh-cn/windows/win32/apiindex/api-index-portal" href="https://docs.microsoft.com/zh-cn/windows/win32/apiindex/api-index-portal"
+          
+            rel="nofollow noreferrer"
+          
+          
+            target="_blank"
+          
+          >
+          <div class='name'>
+            
+              <i class="fab fa-windows fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Windiws API Index
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  <div <i class="fa fa-copyright">&nbsp;2018 - 2019</i>
+  <span> | </span>
+  <i class="fas fa-pen">&nbsp;IntPtr.Zero</i>
+  </div>
+  <br>
+  <br>
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="https://github.com/intptrzero"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://leetcode-cn.com/u/intptr/"
+            class="social fas fa-code flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:hzau.yuzixiong@qq.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=295901484"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div>
+	<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+		<script>
+		var now = new Date(); 
+		function createtime() { 
+        var grt= new Date("12/23/2018 18:00:00");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "博客已在线运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+		} 
+		setInterval("createtime()",250);
+		</script>
+	<span>&nbsp;|&nbsp;</span>
+	
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+  </div>
+  <div>
+  Powered by Github and MarkdownPad 2
+  </div>
+  <br>
+  <div>--------------------------- 别拉了，我是有底线的>_< ---------------------------</div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('') {
+          $('').backstretch(
+          ["/images/back.jpg", "/images/back1.jpg", "/images/back2.jpg"],
+          {
+            duration: "10000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["/images/back.jpg", "/images/back1.jpg", "/images/back2.jpg"],
+          {
+            duration: "10000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: "3df74de60feed2ce1724",
+      clientSecret: "bc3dba6ff0042f1cce4eeee8b596894dc2856ef0",
+      repo: "IntPtrZero.github.io",
+      owner: "intptrzero",
+      admin: "intptrzero",
+      
+        id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+      
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+    gitalk.render('gitalk-container');
+  </script>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.5/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.5/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

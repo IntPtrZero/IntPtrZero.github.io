@@ -252,8 +252,8 @@
       
         
   <h2 class="title">
-    <a href="/2018/12/28/C-FunTemplate/">
-      C++模板与泛型 - 函数模板
+    <a href="/2018/12/28/C-Template/">
+      C++泛型基础 - 模板
     </a>
   </h2>
 
@@ -320,11 +320,11 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h3 id="隐式实例化与显式实例化"><a href="#隐式实例化与显式实例化" class="headerlink" title="隐式实例化与显式实例化"></a>隐式实例化与显式实例化</h3><p>函数模板解决的是不同参数类型的函数重载问题，常规的模板函数声明如下:</p>
+      <h2 id="函数模板"><a href="#函数模板" class="headerlink" title="函数模板"></a>函数模板</h2><h3 id="隐式实例化与显式实例化"><a href="#隐式实例化与显式实例化" class="headerlink" title="隐式实例化与显式实例化"></a>隐式实例化与显式实例化</h3><p>常规的模板函数声明如下:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">add</span><span class="params">(T arg1, T arg2)</span></span>;</span><br></pre></td></tr></table></figure>
       
         <div class="readmore">
-          <a href="/2018/12/28/C-FunTemplate/" class="flat-box">
+          <a href="/2018/12/28/C-Template/" class="flat-box">
             <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
             阅读全文
           </a>
@@ -460,9 +460,11 @@
     <div class='content pure'>
       <ul class="entry">
         
-          <li><a class="flat-box" title="/categories/C/" href="/categories/C/"><div class='name'>C++</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/C/" href="/categories/C/"><div class='name'>C++</div><div class='badge'>(5)</div></a></li>
         
           <li><a class="flat-box" title="/categories/LeetCode/" href="/categories/LeetCode/"><div class='name'>LeetCode</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/NET/" href="/categories/NET/"><div class='name'>.NET</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box" title="/categories/算法/" href="/categories/算法/"><div class='name'>算法</div><div class='badge'>(1)</div></a></li>
         
@@ -495,7 +497,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/动态规划/" style="font-size: 19px; color: #777">动态规划</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a> <a href="/tags/算法/" style="font-size: 24px; color: #555">算法</a>
+      <a href="/tags/NET/" style="font-size: 16.5px; color: #888">.NET</a> <a href="/tags/C/" style="font-size: 21.5px; color: #666">C++</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/GC/" style="font-size: 14px; color: #999">GC</a> <a href="/tags/STL/" style="font-size: 19px; color: #777">STL</a> <a href="/tags/动态规划/" style="font-size: 19px; color: #777">动态规划</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a> <a href="/tags/算法/" style="font-size: 24px; color: #555">算法</a> <a href="/tags/类/" style="font-size: 14px; color: #999">类</a>
     </div>
   </section>
 
@@ -644,7 +646,7 @@
 		<script>
 		var now = new Date(); 
 		function createtime() { 
-        var grt= new Date("11/21/2018 18:00:00");//在此处修改你的建站时间
+        var grt= new Date("12/23/2018 18:00:00");//在此处修改你的建站时间
         now.setTime(now.getTime()+250); 
         days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
         hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 

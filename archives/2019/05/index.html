@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>动态规划 - 背包问题 | IntPtr.Zero</title>
+  <title>Archives: 2019/5 | IntPtr.Zero</title>
   
   
   <meta name="description" content="Code and Learn">
@@ -227,11 +227,26 @@
   <div class="l_body nocover">
     <div class='body-wrapper'>
       <div class='l_main'>
-  
-
-  
-    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+	
+		
+  <section class="post-list">
+    
       
+        
+          
+        
+          
+        
+          
+        
+      
+    
+    
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
 
 
   <section class='meta'>
@@ -240,13 +255,11 @@
     <div class="meta" id="header-meta">
       
         
-  
-    <h1 class="title">
-      <a href="/2019/03/14/DP-01Pack/">
-        动态规划 - 背包问题
-      </a>
-    </h1>
-  
+  <h2 class="title">
+    <a href="/2019/05/22/CLR-Delegate/">
+      .NET - 委托
+    </a>
+  </h2>
 
 
       
@@ -272,7 +285,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt" aria-hidden="true"></i>
-    <p>2019-03-14</p>
+    <p>2019-05-22</p>
   </a>
 </div>
 
@@ -282,9 +295,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/算法/' rel="nofollow">
+    <a href='/categories/NET/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>算法</p>
+      <p>.NET</p>
     </a>
   </div>
 
@@ -293,19 +306,6 @@
         
           
             
-  
-    <div class="new-meta-item browse busuanzi">
-      <a class='notlink'>
-        <i class="fas fa-eye" aria-hidden="true"></i>
-        <p>
-          <span id="busuanzi_value_page_pv">
-            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
-          </span>
-        </p>
-      </a>
-    </div>
-  
-
 
           
         
@@ -322,135 +322,255 @@
   </section>
 
 
-      <section class="article typo">
-        <div class="article-entry" itemprop="articleBody">
-          <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>有一个背包，最大容量为P，现有数量为S的一堆物品，其大小和价值各不相同，求如何保证背包所装物品价值最高。物品大小与价值由数组w[S]和v[S]给出。  </p>
-<a id="more"></a>
-
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>类似问题如果用暴力求解时间复杂度将不可接受。分析问题发现，对于选定的物品，其状态只有两种 – 拿走或放弃，这是一个很明显的动态规划问题。设dp[i][j]为<strong>剩余可选</strong>物品数量 i 和<strong>剩余空间</strong> j 时的物品价值，则很显然有状态方程：dp[i][j] = max[dp[i - 1][j], dp[i - 1][j - w[i-1]]+v[i-1]]. 前者对应放弃物品，因此背包剩余容量不变。后者对应拿走物品，背包容量减少，总价值加上选中物品价值。</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><h4 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> dp[S+<span class="number">1</span>][P+<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> pick[S];	<span class="comment">//保存选中物品</span></span><br><span class="line"><span class="comment">//初始化</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;S;i++)</span><br><span class="line">	pick[i]=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= S; i++)</span><br><span class="line">	dp[i][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= P; i++)</span><br><span class="line">	dp[<span class="number">0</span>][i] = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//DP</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= S; i++)</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= P; j++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (j &lt; w[i - <span class="number">1</span>])	<span class="comment">//背包空间不足</span></span><br><span class="line">		&#123;</span><br><span class="line">			dp[i][j] = dp[i - <span class="number">1</span>][j];</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			dp[i][j] = max(dp[i - <span class="number">1</span>][j], dp[i - <span class="number">1</span>][j - w[i - <span class="number">1</span>]] + v[i - <span class="number">1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//反向查找选中物品</span></span><br><span class="line"><span class="keyword">int</span> j = P;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = S; i &gt;<span class="number">0</span>; i--)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (dp[i][j] &gt; dp[i - <span class="number">1</span>][j])</span><br><span class="line">	&#123;</span><br><span class="line">		pick[i - <span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">		j -= w[i - <span class="number">1</span>];</span><br><span class="line">		<span class="keyword">if</span> (j&lt;=<span class="number">0</span>)</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>难点：从剩余物品中取时容易理解成贪心算法，每一步DP实际上是<strong>从第一个物品选到当前物品</strong></p>
-
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="委托与函数指针"><a href="#委托与函数指针" class="headerlink" title="委托与函数指针"></a>委托与函数指针</h3><p>在C++中经常需要以变量形式传递函数，函数在底层实际上就是一个地址，调用时跳转到相应的地址执行代码，函数指针类型可以非常方便的用来传递函数地址，但C++中的函数指针仅仅是一个指针类型变量，无法提供参数和返回值等详细信息，因此函数指针不是类型安全的。CLR在此基础上更进一步，将函数指针抽象化为委托，增强了类型安全。</p>
+      
+        <div class="readmore">
+          <a href="/2019/05/22/CLR-Delegate/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
         </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
         
-          
+          <a href="/tags/NET/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>.NET</a>
+        
+      </div>
+    
+  </section>
+</article>
 
-
-  <section class='meta' id="footer-meta">
-    <hr>
-    <div class='new-meta-box'>
+          </div>
+        
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-09-01T23:50:35+08:00">
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/05/18/C-Class/">
+      类与多态 - 静态绑定和动态绑定
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="https://intptrzero.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>IntPtr.Zero</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
   <a class='notlink'>
-    <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2019年9月1日</p>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-05-18</p>
   </a>
 </div>
 
-        
-      
+          
         
           
+            
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/算法/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>算法</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/动态规划/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>动态规划</p></a></div>
+  <div class='new-meta-item category'>
+    <a href='/categories/C/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>C++</p>
+    </a>
+  </div>
 
 
+          
         
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
       
     </div>
   </section>
 
 
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="静态绑定"><a href="#静态绑定" class="headerlink" title="静态绑定"></a>静态绑定</h3><p>编译器在编译阶段完成的函数调用分析即为静态绑定，在编译阶段，编译器查看对象的编译时类型，以此来确定调用的函数，例如：</p>
+      
+        <div class="readmore">
+          <a href="/2019/05/18/C-Class/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
         
+          <a href="/tags/C/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>C++</a>
         
-            <div class="prev-next">
-                
-                    <section class="prev">
-                        <span class="art-item-left">
-                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
-                            <h4>
-                                <a href="/2019/04/02/Leetcode-CanSum/" rel="prev" title="Leetcode - 数组等和分割">
-                                  
-                                      Leetcode - 数组等和分割
-                                  
-                                </a>
-                            </h4>
-                            
-                                
-                                <h6 class="tags">
-                                    <a class="tag" href="/tags/算法/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>算法</a> <a class="tag" href="/tags/动态规划/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>动态规划</a> <a class="tag" href="/tags/DFS/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>DFS</a>
-                                </h6>
-                            
-                        </span>
-                    </section>
-                
-                
-                    <section class="next">
-                        <span class="art-item-right" aria-hidden="true">
-                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
-                            <h4>
-                                <a href="/2019/02/28/Leetcode-2Sum/" rel="prev" title="Leetcode - 两数之和">
-                                    
-                                        Leetcode - 两数之和
-                                    
-                                </a>
-                            </h4>
-                            
-                                
-                                <h6 class="tags">
-                                    <a class="tag" href="/tags/算法/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>算法</a>
-                                </h6>
-                            
-                        </span>
-                    </section>
-                
-            </div>
+          <a href="/tags/类/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>类</a>
         
-      </section>
-    </article>
-  
+      </div>
+    
+  </section>
+</article>
 
-  
-    <!-- 显示推荐文章和评论 -->
-
-
-
-  <article class="post white-box comments">
-    <section class="article typo">
-      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+          </div>
+        
       
-      
-      
-        <section id="comments">
-          <div id="gitalk-container"></div>
-        </section>
-      
-      
-    </section>
-  </article>
-
-
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
   
 
 
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/05/12/CLR-GC/">
+      CLR - 内存管理与垃圾回收
+    </a>
+  </h2>
 
 
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="https://intptrzero.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>IntPtr.Zero</p>
+    </a>
+  </div>
 
 
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-05-12</p>
+  </a>
+</div>
 
-  <script>
-    window.subData = {
-      title: '动态规划 - 背包问题',
-      tools: true
-    }
-  </script>
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/NET/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>.NET</p>
+    </a>
+  </div>
 
 
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="CLR内存分配"><a href="#CLR内存分配" class="headerlink" title="CLR内存分配"></a>CLR内存分配</h3><p>无论是C#、VB.NET或是Java，这些所谓的高级编程语言实际上都致力于解决C++中常见的内存泄露问题，方法很简单 – 那就是剥夺程序员对于物理内存空间的直接控制权，重新虚拟一层“可控”的内存空间，并由框架(.NET的CLR以及Java的JVM)自行处理内存问题。这样虽然牺牲了一点点性能以及少许灵活性，但大大提高了安全性，更不用说框架封装所带来的便利。</p>
+      
+        <div class="readmore">
+          <a href="/2019/05/12/CLR-GC/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/NET/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>.NET</a>
+        
+          <a href="/tags/GC/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>GC</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+    
+  </section>
+  
+    
+    <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+    
+    
+
+  
+
+
+	
 </div>
 <aside class='l_side'>
   
@@ -553,9 +673,11 @@
     <div class='content pure'>
       <ul class="entry">
         
-          <li><a class="flat-box" title="/categories/C/" href="/categories/C/"><div class='name'>C++</div><div class='badge'>(1)</div></a></li>
+          <li><a class="flat-box" title="/categories/C/" href="/categories/C/"><div class='name'>C++</div><div class='badge'>(5)</div></a></li>
         
           <li><a class="flat-box" title="/categories/LeetCode/" href="/categories/LeetCode/"><div class='name'>LeetCode</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/NET/" href="/categories/NET/"><div class='name'>.NET</div><div class='badge'>(2)</div></a></li>
         
           <li><a class="flat-box" title="/categories/算法/" href="/categories/算法/"><div class='name'>算法</div><div class='badge'>(1)</div></a></li>
         
@@ -588,7 +710,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/C/" style="font-size: 14px; color: #999">C++</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/动态规划/" style="font-size: 19px; color: #777">动态规划</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a> <a href="/tags/算法/" style="font-size: 24px; color: #555">算法</a>
+      <a href="/tags/NET/" style="font-size: 16.5px; color: #888">.NET</a> <a href="/tags/C/" style="font-size: 21.5px; color: #666">C++</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/GC/" style="font-size: 14px; color: #999">GC</a> <a href="/tags/STL/" style="font-size: 19px; color: #777">STL</a> <a href="/tags/动态规划/" style="font-size: 19px; color: #777">动态规划</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a> <a href="/tags/算法/" style="font-size: 24px; color: #555">算法</a> <a href="/tags/类/" style="font-size: 14px; color: #999">类</a>
     </div>
   </section>
 
@@ -737,7 +859,7 @@
 		<script>
 		var now = new Date(); 
 		function createtime() { 
-        var grt= new Date("11/21/2018 18:00:00");//在此处修改你的建站时间
+        var grt= new Date("12/23/2018 18:00:00");//在此处修改你的建站时间
         now.setTime(now.getTime()+250); 
         days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
         hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
@@ -764,6 +886,14 @@
   <div>--------------------------- 别拉了，我是有底线的>_< ---------------------------</div>
 </footer>
 <script>setLoadingBarProgress(80);</script>
+
+
+
+
+	<!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
+	
+
+	
 
 
       <script>setLoadingBarProgress(60);</script>
@@ -850,24 +980,6 @@
 
 
 
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
-  <script type="text/javascript">
-    var gitalk = new Gitalk({
-      clientID: "3df74de60feed2ce1724",
-      clientSecret: "bc3dba6ff0042f1cce4eeee8b596894dc2856ef0",
-      repo: "IntPtrZero.github.io",
-      owner: "intptrzero",
-      admin: "intptrzero",
-      
-        id: md5(location.pathname),      // Ensure uniqueness and length less than 50
-      
-      distractionFreeMode: false  // Facebook-like distraction free mode
-    });
-    gitalk.render('gitalk-container');
-  </script>
 
 
 
