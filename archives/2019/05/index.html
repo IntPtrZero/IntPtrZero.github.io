@@ -257,7 +257,7 @@
         
   <h2 class="title">
     <a href="/2019/05/22/CLR-Delegate/">
-      .NET - 委托
+      CLR - 委托与事件
     </a>
   </h2>
 
@@ -324,7 +324,7 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h3 id="委托与函数指针"><a href="#委托与函数指针" class="headerlink" title="委托与函数指针"></a>委托与函数指针</h3><p>在C++中经常需要以变量形式传递函数，函数在底层实际上就是一个地址，调用时跳转到相应的地址执行代码，函数指针类型可以非常方便的用来传递函数地址，但C++中的函数指针仅仅是一个指针类型变量，无法提供参数和返回值等详细信息，因此函数指针不是类型安全的。CLR在此基础上更进一步，将函数指针抽象化为委托，增强了类型安全。</p>
+      <h3 id="委托"><a href="#委托" class="headerlink" title="委托"></a>委托</h3><p>委托实际上可以看作对C++函数指针的高级封装，只不过委托提供了编译时的类型安全。CLR的委托本质上是一个类，对委托的声明会被编译器翻译为一个继承自MulticastDelegate的派生类，代码如下:</p>
       
         <div class="readmore">
           <a href="/2019/05/22/CLR-Delegate/" class="flat-box">
@@ -675,7 +675,7 @@
         
           <li><a class="flat-box" title="/categories/LeetCode/" href="/categories/LeetCode/"><div class='name'>LeetCode</div><div class='badge'>(6)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/NET/" href="/categories/NET/"><div class='name'>.NET</div><div class='badge'>(2)</div></a></li>
+          <li><a class="flat-box" title="/categories/NET/" href="/categories/NET/"><div class='name'>.NET</div><div class='badge'>(6)</div></a></li>
         
           <li><a class="flat-box" title="/categories/算法/" href="/categories/算法/"><div class='name'>算法</div><div class='badge'>(1)</div></a></li>
         
@@ -710,7 +710,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/NET/" style="font-size: 16.5px; color: #888">.NET</a> <a href="/tags/C/" style="font-size: 21.5px; color: #666">C++</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/GC/" style="font-size: 14px; color: #999">GC</a> <a href="/tags/OOP/" style="font-size: 14px; color: #999">OOP</a> <a href="/tags/STL/" style="font-size: 19px; color: #777">STL</a> <a href="/tags/动态规划/" style="font-size: 19px; color: #777">动态规划</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a> <a href="/tags/算法/" style="font-size: 24px; color: #555">算法</a>
+      <a href="/tags/NET/" style="font-size: 21.5px; color: #666">.NET</a> <a href="/tags/C/" style="font-size: 19px; color: #777">C++</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/GC/" style="font-size: 14px; color: #999">GC</a> <a href="/tags/OOP/" style="font-size: 14px; color: #999">OOP</a> <a href="/tags/STL/" style="font-size: 16.5px; color: #888">STL</a> <a href="/tags/动态规划/" style="font-size: 16.5px; color: #888">动态规划</a> <a href="/tags/多线程/" style="font-size: 19px; color: #777">多线程</a> <a href="/tags/异步/" style="font-size: 14px; color: #999">异步</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a> <a href="/tags/算法/" style="font-size: 24px; color: #555">算法</a>
     </div>
   </section>
 

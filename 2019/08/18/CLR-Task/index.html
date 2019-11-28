@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>CLR - Task | IntPtr.Zero</title>
+  
+  
+  <meta name="description" content="Code and Learn">
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/images/fav.ico">
+  
+
+  
+    <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          IntPtr.Zero
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-home fa-fw'></i>&nbsp;主页
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-tags fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;存档
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/links/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="links">
+									<i class='fas fa-bookmark fa-fw'></i>&nbsp;推荐
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/about/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="about">
+									<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;主页
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://github.com/intptrzero"
+                
+                
+                id="https:github.comintptrzero">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/links/"
+                
+                  rel="nofollow"
+                
+                
+                id="links">
+								<i class='fas fa-bookmark fa-fw'></i>&nbsp;推荐
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/08/18/CLR-Task/">
+        CLR - Task
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="https://intptrzero.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>IntPtr.Zero</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-08-18</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/NET/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>.NET</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <h3 id="使用Task"><a href="#使用Task" class="headerlink" title="使用Task"></a>使用Task</h3><p>使用ThreadPool可以方便的发起异步操作，但却无法知道操作在何时完成，且无法直接获取操作的返回值，为此CLR提供了对线程池的再一次包装，即Task类。Task内部实际上也是使用线程池，只不过封装了一些高级功能。</p>
+<a id="more"></a>
+
+<p>Task支持直接获取任务执行结果，例如：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Task&lt;<span class="keyword">int</span>&gt; t = <span class="keyword">new</span> Task&lt;<span class="keyword">int</span>&gt;(n=&gt;Sum(<span class="keyword">int</span> n),<span class="number">1000</span>);</span><br><span class="line">t.Start();</span><br><span class="line"><span class="comment">//执行其它操作</span></span><br><span class="line">Thread.Sleep(<span class="number">2000</span>);</span><br><span class="line"><span class="comment">//显式等待Task完成</span></span><br><span class="line"><span class="comment">//t.Wait();</span></span><br><span class="line"><span class="comment">//在需要结果的时候访问结果</span></span><br><span class="line">Console.WriteLine(t.Result);</span><br></pre></td></tr></table></figure>
+
+<p>无论是等待还是访问结果，都会阻塞当前线程以等待任务运行完毕。如果此时任务还未被调度给线程池线程执行，则可能会直接分配给当前线程以提高性能。</p>
+<p>Task的取消与ThreadPool相似，传递一个CTS即可。不同之处在于Task支持返回结果，因此Task会在取消任务时抛出异常以区别于正常结束任务。为了方便区分，推荐在任务方法中使用CT.ThrowIfCancellationRequested以抛出OperationCanceledException.</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">CancellationTokenSource cts = <span class="keyword">new</span> CancellationTokenSource();</span><br><span class="line">Task t = <span class="keyword">new</span> Task&lt;<span class="keyword">int</span>&gt;(()=&gt;Sum(<span class="number">1000</span>,cts.Token),cts.Token);</span><br><span class="line">t.Start();</span><br><span class="line">Thread.Sleep(<span class="number">100</span>);</span><br><span class="line">cts.Cancel();</span><br><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(t.Result);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span> (AggregateException ex)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//如果是取消产生的异常，则忽略</span></span><br><span class="line">	x.Handle(ex=&gt;ex <span class="keyword">is</span> OperationCanceledException;</span><br><span class="line">	Console.WriteLine(<span class="string">"操作取消"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Static <span class="keyword">int</span> <span class="title">Sum</span>(<span class="params"><span class="keyword">int</span> n, CancellationToken ct</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//检查是否已取消并抛出异常</span></span><br><span class="line">		ct.ThrowIfCancellationRequested();</span><br><span class="line">		sum+=i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="延续任务"><a href="#延续任务" class="headerlink" title="延续任务"></a>延续任务</h3><p>Task支持在任务完成后继续执行其它任务，并可指定延续任务的执行条件</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Task&lt;<span class="keyword">int</span>&gt; t = Task.Run(()=&gt;Sum(<span class="number">1000</span>,cts.Token),cts.Token);</span><br><span class="line">t.ContinueWith(task=&gt;Console.WriteLine(task.Result,TaskContinuationOptions);</span><br></pre></td></tr></table></figure>
+
+<p>其中t作为参数被传递到延续任务中</p>
+<h3 id="父子任务"><a href="#父子任务" class="headerlink" title="父子任务"></a>父子任务</h3><p>可以在一个Task中包含若干个子任务，只有在所有子任务完成后父任务才会被标记为完成状态</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Task&lt;<span class="keyword">int</span>[]&gt; parent=<span class="keyword">new</span> Task&lt;<span class="keyword">int</span>[]&gt;(()=&gt;&#123;</span><br><span class="line">	<span class="keyword">var</span> results=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</span><br><span class="line">	<span class="keyword">new</span> Task(()=&gt;results[<span class="number">0</span>]=Sum(<span class="number">1000</span>),TaskCreationOptions.AttachedtoParent).Start();</span><br><span class="line">	<span class="keyword">new</span> Task(()=&gt;results[<span class="number">1</span>]=Sum(<span class="number">2000</span>),TaskCreationOptions.AttachedtoParent).Start();</span><br><span class="line">	<span class="keyword">new</span> Task(()=&gt;results[<span class="number">2</span>]=Sum(<span class="number">3000</span>),TaskCreationOptions.AttachedtoParent).Start();</span><br><span class="line">	<span class="keyword">return</span> results;</span><br><span class="line">	&#125;);</span><br><span class="line">parent.Start();</span><br></pre></td></tr></table></figure>
+
+<h3 id="任务调度器"><a href="#任务调度器" class="headerlink" title="任务调度器"></a>任务调度器</h3><p>Task在内部使用TaskScheduler进行任务调度，CLR内部使用了两个派生类，分别是基于线程池的线程池调度器和基于同步上下文的上下文调度器。<br>线程池调度器是Task的默认调度器，而同步上下文调度器适用于更新GUI的任务，因为.NET禁止从非GUI线程更新界面。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Class MyForm:Form</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">public</span> MyForm</span><br><span class="line">	&#123;</span><br><span class="line">		Task t=<span class="keyword">new</span> Task(()=&gt;SomeWork())</span><br><span class="line">		t.ContinueWith(task =&gt; Text = <span class="string">"任务完成"</span>, CancellationToken.None, TaskContinuationOptions.None, TaskScheduler.FromCurrentSynchronizationContext);</span><br><span class="line">		t.Start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-20T23:52:09+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年11月20日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/NET/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>.NET</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/多线程/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>多线程</p></a></div>
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/09/01/CLR-Async/" rel="prev" title="CLR - 异步I/O">
+                                  
+                                      CLR - 异步I/O
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/NET/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>.NET</a> <a class="tag" href="/tags/多线程/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>多线程</a> <a class="tag" href="/tags/异步/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>异步</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/08/16/CLR-MT/" rel="prev" title="CLR - ThreadPool">
+                                    
+                                        CLR - ThreadPool
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/NET/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>.NET</a> <a class="tag" href="/tags/多线程/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>多线程</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+        <section id="comments">
+          <div id="gitalk-container"></div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'CLR - Task',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+        
+          
+          
+            <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='/images/logo.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="https://github.com/intptrzero"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://leetcode-cn.com/u/intptr/"
+              class="social fas fa-code flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:hzau.yuzixiong@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=295901484"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+          
+        
+      
+        
+          
+          
+            <section class='widget plain'>
+  
+<header class='pure'>
+  <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;公告栏</div>
+  
+</header>
+
+  <div class='content pure'>
+    <p>博客界面重写，评论系统切换为Gitalk，文章将逐步恢复访问。  <div style="text-align:right"> –2019/08/20</div></p>
+
+  </div>
+</section>
+
+          
+        
+      
+        
+          
+          
+            
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/categories/"
+    title="/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/C/" href="/categories/C/"><div class='name'>C++</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/LeetCode/" href="/categories/LeetCode/"><div class='name'>LeetCode</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/NET/" href="/categories/NET/"><div class='name'>.NET</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/算法/" href="/categories/算法/"><div class='name'>算法</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/类/" href="/categories/类/"><div class='name'>类</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+          
+        
+      
+        
+          
+          
+            
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/tags/"
+    title="/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/NET/" style="font-size: 21.5px; color: #666">.NET</a> <a href="/tags/C/" style="font-size: 19px; color: #777">C++</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/GC/" style="font-size: 14px; color: #999">GC</a> <a href="/tags/OOP/" style="font-size: 14px; color: #999">OOP</a> <a href="/tags/STL/" style="font-size: 16.5px; color: #888">STL</a> <a href="/tags/动态规划/" style="font-size: 16.5px; color: #888">动态规划</a> <a href="/tags/多线程/" style="font-size: 19px; color: #777">多线程</a> <a href="/tags/异步/" style="font-size: 14px; color: #999">异步</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a> <a href="/tags/算法/" style="font-size: 24px; color: #555">算法</a>
+    </div>
+  </section>
+
+
+          
+        
+      
+        
+          
+          
+            
+
+
+  <section class='widget music'>
+    
+<header class='pure'>
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
+  
+    <a class="rightBtn"
+    
+      rel="external nofollow noopener noreferrer"
+    
+    
+      target="_blank"
+    
+    href="https://music.163.com/#/user/home?id=295901484"
+    title="https://music.163.com/#/user/home?id=295901484">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme="#1BCDFC"
+    
+    
+    data-mode="circulation"
+    data-server="netease"
+    data-type="playlist"
+    data-id="409467289"
+    data-volume="0.2">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+          
+        
+      
+        
+          
+          
+            <section class='widget list'>
+  
+<header class='pure'>
+  <div><i class="fas fa-link fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;在线文档</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://docs.microsoft.com/zh-cn/windows/win32/apiindex/api-index-portal" href="https://docs.microsoft.com/zh-cn/windows/win32/apiindex/api-index-portal"
+          
+            rel="nofollow noreferrer"
+          
+          
+            target="_blank"
+          
+          >
+          <div class='name'>
+            
+              <i class="fab fa-windows fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Windiws API Index
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  <div <i class="fa fa-copyright">&nbsp;2018 - 2019</i>
+  <span> | </span>
+  <i class="fas fa-pen">&nbsp;IntPtr.Zero</i>
+  </div>
+  <br>
+  <br>
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="https://github.com/intptrzero"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://leetcode-cn.com/u/intptr/"
+            class="social fas fa-code flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:hzau.yuzixiong@qq.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=295901484"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div>
+	<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+		<script>
+		var now = new Date(); 
+		function createtime() { 
+        var grt= new Date("12/23/2018 18:00:00");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "博客已在线运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+		} 
+		setInterval("createtime()",250);
+		</script>
+	<span>&nbsp;|&nbsp;</span>
+	
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+  </div>
+  <div>
+  Powered by Github and MarkdownPad 2
+  </div>
+  <br>
+  <div>--------------------------- 别拉了，我是有底线的>_< ---------------------------</div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('') {
+          $('').backstretch(
+          ["/images/back.jpg", "/images/back1.jpg", "/images/back2.jpg"],
+          {
+            duration: "10000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["/images/back.jpg", "/images/back1.jpg", "/images/back2.jpg"],
+          {
+            duration: "10000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: "3df74de60feed2ce1724",
+      clientSecret: "bc3dba6ff0042f1cce4eeee8b596894dc2856ef0",
+      repo: "IntPtrZero.github.io",
+      owner: "intptrzero",
+      admin: "intptrzero",
+      
+        id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+      
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+    gitalk.render('gitalk-container');
+  </script>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.5/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.5/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>

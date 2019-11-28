@@ -239,6 +239,14 @@
         
           
         
+          
+        
+          
+        
+          
+        
+          
+        
       
     
     
@@ -256,8 +264,434 @@
       
         
   <h2 class="title">
+    <a href="/2019/09/24/CLR-MTSync/">
+      CLR - 线程同步
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="https://intptrzero.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>IntPtr.Zero</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-09-24</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/NET/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>.NET</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="线程同步构造"><a href="#线程同步构造" class="headerlink" title="线程同步构造"></a>线程同步构造</h3><p>线程同步总体上分为两种构造：用户模式和内核模式。其中用户模式基于CPU指令，内核模式则基于操作系统内核对象。由于用户模式构造由硬件支持，且不发生用户-内核状态切换，因此效率较高。但线程使用基于用户模式的同步时，操作系统也无法捕捉到该线程上的阻塞。因此该线程在操作系统看来总是处于非阻塞状态，这意味着线程总是参与抢占时间片，导致线程无谓的浪费CPU时间。与之相对的是内核模式构造，线程使用操作系统提供的内核对象进行同步，每当进入同步块时，代码需要切换到内核态运行，导致巨大的性能损失。但优点是操作系统可以检测到等待同步对象的线程并将其阻塞，当同步对象可用时再唤醒线程。如果拥有“锁”的线程一直不释放，基于用户模式构造的等待线程将一直在CPU上无意义的运行，称之为“活锁”。基于内核模式构造的等待线程则一直被操作系统阻塞，称之为“死锁”。总体来说“死锁”优于“活锁”，因为前者不消耗CPU时间。</p>
+      
+        <div class="readmore">
+          <a href="/2019/09/24/CLR-MTSync/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/NET/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>.NET</a>
+        
+          <a href="/tags/多线程/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>多线程</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/09/01/CLR-Async/">
+      CLR - 异步I/O
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="https://intptrzero.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>IntPtr.Zero</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-09-01</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/NET/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>.NET</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="同步I-O"><a href="#同步I-O" class="headerlink" title="同步I/O"></a>同步I/O</h3><p>在Windows系统中，应用程序调用I/O函数发起的操作均发生在用户态，而用户态是无法访问I/O硬件设备的，因此Windows把用户态的I/O操作信息打包发送给内核，此时进入内核态访问对应的I/O设备。I/O设备处理请求的操作时，发起I/O请求的线程将被阻塞，只有当I/O操作完成时，才会重新唤醒线程以返回结果。如果在Socket中使用同步I/O操作，当大量客户端请求连接时，将消耗大量线程，造成性能的急剧下降。</p>
+      
+        <div class="readmore">
+          <a href="/2019/09/01/CLR-Async/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/NET/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>.NET</a>
+        
+          <a href="/tags/多线程/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>多线程</a>
+        
+          <a href="/tags/异步/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>异步</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/08/18/CLR-Task/">
+      CLR - Task
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="https://intptrzero.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>IntPtr.Zero</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-08-18</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/NET/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>.NET</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="使用Task"><a href="#使用Task" class="headerlink" title="使用Task"></a>使用Task</h3><p>使用ThreadPool可以方便的发起异步操作，但却无法知道操作在何时完成，且无法直接获取操作的返回值，为此CLR提供了对线程池的再一次包装，即Task类。Task内部实际上也是使用线程池，只不过封装了一些高级功能。</p>
+      
+        <div class="readmore">
+          <a href="/2019/08/18/CLR-Task/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/NET/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>.NET</a>
+        
+          <a href="/tags/多线程/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>多线程</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
+    <a href="/2019/08/16/CLR-MT/">
+      CLR - ThreadPool
+    </a>
+  </h2>
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="https://intptrzero.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>IntPtr.Zero</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-08-16</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/NET/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>.NET</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+  <section class="article typo">
+    <div class="article-entry" itemprop="articleBody">
+      <h3 id="CLR线程池"><a href="#CLR线程池" class="headerlink" title="CLR线程池"></a>CLR线程池</h3><p>虽然CLR通过System.Threading名称空间提供了对Windows线程API的封装，但直接创建和销毁线程严重影响性能。过多的线程不仅浪费内存，而且会造成频繁的CPU上下文切换，更重要的是线程大部分时间都处于无所事事的状态，浪费宝贵的CPU时间。其次多线程非常容易引发滥用，特别是那些没什么多线程基础的程序员，为了所谓的“性能”无脑使用线程，即使在一些商业软件中这种现象也比比皆是。为了减少这种现象，CLR提供了原生的线程池支持。对于每个CLR，线程池线程将被所有运行中的托管程序集共享。</p>
+      
+        <div class="readmore">
+          <a href="/2019/08/16/CLR-MT/" class="flat-box">
+            <i class="fas fa-book-open fa-fw" aria-hidden="true"></i>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+    
+      <div class="full-width auto-padding tags">
+        
+          <a href="/tags/NET/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>.NET</a>
+        
+          <a href="/tags/多线程/" rel="nofollow"><i class="fas fa-hashtag fa-fw"></i>多线程</a>
+        
+      </div>
+    
+  </section>
+</article>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <article class="post reveal ">
+  
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  <h2 class="title">
     <a href="/2019/05/22/CLR-Delegate/">
-      .NET - 委托
+      CLR - 委托与事件
     </a>
   </h2>
 
@@ -324,7 +758,7 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h3 id="委托与函数指针"><a href="#委托与函数指针" class="headerlink" title="委托与函数指针"></a>委托与函数指针</h3><p>在C++中经常需要以变量形式传递函数，函数在底层实际上就是一个地址，调用时跳转到相应的地址执行代码，函数指针类型可以非常方便的用来传递函数地址，但C++中的函数指针仅仅是一个指针类型变量，无法提供参数和返回值等详细信息，因此函数指针不是类型安全的。CLR在此基础上更进一步，将函数指针抽象化为委托，增强了类型安全。</p>
+      <h3 id="委托"><a href="#委托" class="headerlink" title="委托"></a>委托</h3><p>委托实际上可以看作对C++函数指针的高级封装，只不过委托提供了编译时的类型安全。CLR的委托本质上是一个类，对委托的声明会被编译器翻译为一个继承自MulticastDelegate的派生类，代码如下:</p>
       
         <div class="readmore">
           <a href="/2019/05/22/CLR-Delegate/" class="flat-box">
@@ -573,7 +1007,7 @@
         
           <li><a class="flat-box" title="/categories/LeetCode/" href="/categories/LeetCode/"><div class='name'>LeetCode</div><div class='badge'>(6)</div></a></li>
         
-          <li><a class="flat-box" title="/categories/NET/" href="/categories/NET/"><div class='name'>.NET</div><div class='badge'>(2)</div></a></li>
+          <li><a class="flat-box" title="/categories/NET/" href="/categories/NET/"><div class='name'>.NET</div><div class='badge'>(6)</div></a></li>
         
           <li><a class="flat-box" title="/categories/算法/" href="/categories/算法/"><div class='name'>算法</div><div class='badge'>(1)</div></a></li>
         
@@ -608,7 +1042,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/NET/" style="font-size: 16.5px; color: #888">.NET</a> <a href="/tags/C/" style="font-size: 21.5px; color: #666">C++</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/GC/" style="font-size: 14px; color: #999">GC</a> <a href="/tags/OOP/" style="font-size: 14px; color: #999">OOP</a> <a href="/tags/STL/" style="font-size: 19px; color: #777">STL</a> <a href="/tags/动态规划/" style="font-size: 19px; color: #777">动态规划</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a> <a href="/tags/算法/" style="font-size: 24px; color: #555">算法</a>
+      <a href="/tags/NET/" style="font-size: 21.5px; color: #666">.NET</a> <a href="/tags/C/" style="font-size: 19px; color: #777">C++</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/GC/" style="font-size: 14px; color: #999">GC</a> <a href="/tags/OOP/" style="font-size: 14px; color: #999">OOP</a> <a href="/tags/STL/" style="font-size: 16.5px; color: #888">STL</a> <a href="/tags/动态规划/" style="font-size: 16.5px; color: #888">动态规划</a> <a href="/tags/多线程/" style="font-size: 19px; color: #777">多线程</a> <a href="/tags/异步/" style="font-size: 14px; color: #999">异步</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a> <a href="/tags/算法/" style="font-size: 24px; color: #555">算法</a>
     </div>
   </section>
 

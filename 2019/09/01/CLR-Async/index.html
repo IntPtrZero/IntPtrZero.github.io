@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>CLR - 异步I/O | IntPtr.Zero</title>
+  
+  
+  <meta name="description" content="Code and Learn">
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+  <link rel="shortcut icon" type="image/x-icon" href="/images/fav.ico">
+  
+
+  
+    <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  
+  <header class="l_header pure">
+  <div id="loading-bar-wrapper">
+    <div id="loading-bar" class="pure"></div>
+  </div>
+
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          IntPtr.Zero
+        
+      </a>
+			<div class='menu navgation'>
+				<ul class='h-list'>
+          
+  					
+  						<li>
+								<a class="nav flat-box" href="/"
+                  
+                  
+                  id="home">
+									<i class='fas fa-home fa-fw'></i>&nbsp;主页
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/categories/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="categories">
+									<i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/tags/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="tags">
+									<i class='fas fa-tags fa-fw'></i>&nbsp;标签
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/archives/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="archives">
+									<i class='fas fa-archive fa-fw'></i>&nbsp;存档
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/links/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="links">
+									<i class='fas fa-bookmark fa-fw'></i>&nbsp;推荐
+								</a>
+							</li>
+      			
+  						<li>
+								<a class="nav flat-box" href="/about/"
+                  
+                    rel="nofollow"
+                  
+                  
+                  id="about">
+									<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<i class="icon fas fa-search fa-fw"></i>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+        
+          <li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+        
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu navgation">
+      <ul>
+        
+          
+            <li>
+							<a class="nav flat-box" href="/"
+                
+                
+                id="home">
+								<i class='fas fa-clock fa-fw'></i>&nbsp;主页
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/archives/"
+                
+                  rel="nofollow"
+                
+                
+                id="archives">
+								<i class='fas fa-archive fa-fw'></i>&nbsp;文章
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="https://github.com/intptrzero"
+                
+                
+                id="https:github.comintptrzero">
+								<i class='fas fa-code-branch fa-fw'></i>&nbsp;项目
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/links/"
+                
+                  rel="nofollow"
+                
+                
+                id="links">
+								<i class='fas fa-bookmark fa-fw'></i>&nbsp;推荐
+							</a>
+            </li>
+          
+            <li>
+							<a class="nav flat-box" href="/about/"
+                
+                  rel="nofollow"
+                
+                
+                id="about">
+								<i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
+							</a>
+            </li>
+          
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      <div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2019/09/01/CLR-Async/">
+        CLR - 异步I/O
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+  <div class='new-meta-item author'>
+    <a href="https://intptrzero.github.io" rel="nofollow">
+      
+        <i class="fas fa-user" aria-hidden="true"></i>
+      
+      <p>IntPtr.Zero</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+    <p>2019-09-01</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/NET/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>.NET</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            
+  
+    <div class="new-meta-item browse busuanzi">
+      <a class='notlink'>
+        <i class="fas fa-eye" aria-hidden="true"></i>
+        <p>
+          <span id="busuanzi_value_page_pv">
+            <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+          </span>
+        </p>
+      </a>
+    </div>
+  
+
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          <h3 id="同步I-O"><a href="#同步I-O" class="headerlink" title="同步I/O"></a>同步I/O</h3><p>在Windows系统中，应用程序调用I/O函数发起的操作均发生在用户态，而用户态是无法访问I/O硬件设备的，因此Windows把用户态的I/O操作信息打包发送给内核，此时进入内核态访问对应的I/O设备。I/O设备处理请求的操作时，发起I/O请求的线程将被阻塞，只有当I/O操作完成时，才会重新唤醒线程以返回结果。如果在Socket中使用同步I/O操作，当大量客户端请求连接时，将消耗大量线程，造成性能的急剧下降。</p>
+<a id="more"></a>
+
+<h3 id="异步I-O"><a href="#异步I-O" class="headerlink" title="异步I/O"></a>异步I/O</h3><p>异步I/O与同步I/O不同之处在于，当内核向I/O设备发送请求后，线程将直接返回继续执行其它任务。当设备处理完I/O请求后，Windows将处理结果放入任务队列等待线程处理，对于CLR，则是放入线程池任务队列，等待线程池线程处理。CLR异步I/O实际上是对Windows I/O完成端口的封装。</p>
+<h3 id="异步方法"><a href="#异步方法" class="headerlink" title="异步方法"></a>异步方法</h3><p>.NET4.5提供了全新的async和await关键字来取代以前的Beginxxx和Endxxx系列异步方法。一个简单的例子：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="number">1</span>： Console.WriteLine(<span class="string">"@Main=====Before async，线程ID:"</span>+ Thread.CurrentThread.ManagedThreadId);</span><br><span class="line"><span class="number">2</span>： Task t = DoWorkAsync();</span><br><span class="line"><span class="number">3</span>:  Console.WriteLine(<span class="string">"@Main=====After async，线程ID:"</span> + Thread.CurrentThread.ManagedThreadId);</span><br><span class="line"><span class="number">4</span>:  <span class="keyword">while</span> (!t.IsCompleted)</span><br><span class="line">    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"@Main=====Waiting completed...，线程ID:"</span> + Thread.CurrentThread.ManagedThreadId);</span><br><span class="line">        Thread.Sleep(<span class="number">200</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    Console.Read();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">async</span> Task <span class="title">DoWorkAsync</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="number">5</span>:  Console.WriteLine(<span class="string">"@DoWorkAsync=====Before await，线程ID:"</span> + Thread.CurrentThread.ManagedThreadId);</span><br><span class="line"><span class="number">6</span>:  <span class="keyword">await</span> Task.Run(() =&gt; &#123; Console.WriteLine(<span class="string">"Doing long-time work，线程ID:"</span> + Thread.CurrentThread.ManagedThreadId); Thread.Sleep(<span class="number">2000</span>); &#125;);</span><br><span class="line"><span class="number">7</span>:  Console.WriteLine(<span class="string">"@DoWorkAsync=====After await，线程ID:"</span> + Thread.CurrentThread.ManagedThreadId);</span><br><span class="line">    Console.WriteLine(<span class="string">"@DoWorkAsync=====Job Done,线程ID:"</span> + Thread.CurrentThread.ManagedThreadId);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*输出</span></span><br><span class="line"><span class="comment">@Main=====Before async，线程ID:1</span></span><br><span class="line"><span class="comment">@DoWorkAsync=====Before await，线程ID:1</span></span><br><span class="line"><span class="comment">Doing long-time work，线程ID:3</span></span><br><span class="line"><span class="comment">@Main=====After async，线程ID:1</span></span><br><span class="line"><span class="comment">@Main=====Waiting completed...，线程ID:1</span></span><br><span class="line"><span class="comment">@Main=====Waiting completed...，线程ID:1</span></span><br><span class="line"><span class="comment">@Main=====Waiting completed...，线程ID:1</span></span><br><span class="line"><span class="comment">@DoWorkAsync=====After await，线程ID:3</span></span><br><span class="line"><span class="comment">@DoWorkAsync=====Job Done,线程ID:3</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>很显然async修饰的方法并不是字面意义上的异步方法，而是被内部的await关键字分裂成为两部分。主线程调用DoWorkAsync时会以同步方式执行到await，然后将await修饰的任务交给线程池处理，并立即返回一个与之关联的Task对象。现在主线程继续执行后面的语句，与此同时耗时任务由线程池线程异步执行。等待耗时任务完成之后，线程池线程继续执行await之后的语句，此时DoWorkAsync才真正执行完毕。用序号表示的执行流程图为：</p>
+<p><img src="/images/assets/async.jpg" alt="异步流程"></p>
+<p>对于GUI程序而言，情况又有所不同。异步方法总是会使用GUI线程的SynchronizationContext执行await后续部分(CUI程序的同步上下文为null)，因此上述的After await部分将由主线程执行，如果不慎在主线程中以同步方式等待结果，将造成死锁。例:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">MyForm</span>:<span class="title">Form</span></span><br><span class="line">&#123;</span><br><span class="line">	MyForm()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">string</span> s=GetHttpAsync().Result;</span><br><span class="line">		<span class="comment">//...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">async</span> <span class="title">GetHttpAsync</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	HttpResponseMessage msg=<span class="keyword">await</span> <span class="keyword">new</span> HttpClient().GetAsync(<span class="string">"http://www.baidu.com"</span>);</span><br><span class="line">	<span class="comment">//===After await===</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">await</span>  msg.Content.ReadAsStringAsync();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>GUI线程以同步方式等待Result，此时线程被阻塞。异步执行完HttpClient().GetAsync()后需要主线程接着执行After await部分以返回结果，然而主线程被阻塞，因此造成死锁。注意例子在CUI环境下正常运行。为了防止死锁，.NET提供了Task.ConfigureAwait(bool)方法，传递false时与CUI环境行为一致。</p>
+
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <hr>
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-24T03:11:14+08:00">
+  <a class='notlink'>
+    <i class="fas fa-clock" aria-hidden="true"></i>
+    <p>最后更新于 2019年11月24日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/NET/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>.NET</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/多线程/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>多线程</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/异步/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;<p>异步</p></a></div>
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/09/24/CLR-MTSync/" rel="prev" title="CLR - 线程同步">
+                                  
+                                      CLR - 线程同步
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/NET/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>.NET</a> <a class="tag" href="/tags/多线程/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>多线程</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/08/18/CLR-Task/" rel="prev" title="CLR - Task">
+                                    
+                                        CLR - Task
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/NET/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>.NET</a> <a class="tag" href="/tags/多线程/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>多线程</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+      <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;评论</h4>
+      
+      
+      
+        <section id="comments">
+          <div id="gitalk-container"></div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: 'CLR - 异步I/O',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+    
+    
+      
+        
+          
+          
+            <section class='widget author'>
+  <div class='content pure'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='/images/logo.png'/>
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="https://github.com/intptrzero"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://leetcode-cn.com/u/intptr/"
+              class="social fas fa-code flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:hzau.yuzixiong@qq.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://music.163.com/#/user/home?id=295901484"
+              class="social fas fa-headphones-alt flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+          
+        
+      
+        
+          
+          
+            <section class='widget plain'>
+  
+<header class='pure'>
+  <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;公告栏</div>
+  
+</header>
+
+  <div class='content pure'>
+    <p>博客界面重写，评论系统切换为Gitalk，文章将逐步恢复访问。  <div style="text-align:right"> –2019/08/20</div></p>
+
+  </div>
+</section>
+
+          
+        
+      
+        
+          
+          
+            
+  <section class='widget category'>
+    
+<header class='pure'>
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;文章分类</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/categories/"
+    title="/categories/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/C/" href="/categories/C/"><div class='name'>C++</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/LeetCode/" href="/categories/LeetCode/"><div class='name'>LeetCode</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/NET/" href="/categories/NET/"><div class='name'>.NET</div><div class='badge'>(6)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/算法/" href="/categories/算法/"><div class='name'>算法</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/类/" href="/categories/类/"><div class='name'>类</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+          
+        
+      
+        
+          
+          
+            
+  <section class='widget tagcloud'>
+    
+<header class='pure'>
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;热门标签</div>
+  
+    <a class="rightBtn"
+    
+      rel="nofollow"
+    
+    
+    href="/tags/"
+    title="/tags/">
+    <i class="fas fa-expand-arrows-alt fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      <a href="/tags/NET/" style="font-size: 21.5px; color: #666">.NET</a> <a href="/tags/C/" style="font-size: 19px; color: #777">C++</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/GC/" style="font-size: 14px; color: #999">GC</a> <a href="/tags/OOP/" style="font-size: 14px; color: #999">OOP</a> <a href="/tags/STL/" style="font-size: 16.5px; color: #888">STL</a> <a href="/tags/动态规划/" style="font-size: 16.5px; color: #888">动态规划</a> <a href="/tags/多线程/" style="font-size: 19px; color: #777">多线程</a> <a href="/tags/异步/" style="font-size: 14px; color: #999">异步</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a> <a href="/tags/算法/" style="font-size: 24px; color: #555">算法</a>
+    </div>
+  </section>
+
+
+          
+        
+      
+        
+          
+          
+            
+
+
+  <section class='widget music'>
+    
+<header class='pure'>
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
+  
+    <a class="rightBtn"
+    
+      rel="external nofollow noopener noreferrer"
+    
+    
+      target="_blank"
+    
+    href="https://music.163.com/#/user/home?id=295901484"
+    title="https://music.163.com/#/user/home?id=295901484">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class='content pure'>
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer"
+    data-theme="#1BCDFC"
+    
+    
+    data-mode="circulation"
+    data-server="netease"
+    data-type="playlist"
+    data-id="409467289"
+    data-volume="0.2">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+          
+        
+      
+        
+          
+          
+            <section class='widget list'>
+  
+<header class='pure'>
+  <div><i class="fas fa-link fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;在线文档</div>
+  
+</header>
+
+  <div class='content pure'>
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://docs.microsoft.com/zh-cn/windows/win32/apiindex/api-index-portal" href="https://docs.microsoft.com/zh-cn/windows/win32/apiindex/api-index-portal"
+          
+            rel="nofollow noreferrer"
+          
+          
+            target="_blank"
+          
+          >
+          <div class='name'>
+            
+              <i class="fab fa-windows fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Windiws API Index
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+          
+        
+      
+    
+
+  
+</aside>
+
+<footer id="footer" class="clearfix">
+  
+  <div <i class="fa fa-copyright">&nbsp;2018 - 2019</i>
+  <span> | </span>
+  <i class="fas fa-pen">&nbsp;IntPtr.Zero</i>
+  </div>
+  <br>
+  <br>
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="https://github.com/intptrzero"
+            class="social fab fa-github flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://leetcode-cn.com/u/intptr/"
+            class="social fas fa-code flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="mailto:hzau.yuzixiong@qq.com"
+            class="social fas fa-envelope flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+        
+          <a href="https://music.163.com/#/user/home?id=295901484"
+            class="social fas fa-headphones-alt flat-btn"
+            target="_blank"
+            rel="external nofollow noopener noreferrer">
+          </a>
+        
+      
+    </div>
+  
+  <br>
+  <div>
+	<span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+		<script>
+		var now = new Date(); 
+		function createtime() { 
+        var grt= new Date("12/23/2018 18:00:00");//在此处修改你的建站时间
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "博客已在线运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+		} 
+		setInterval("createtime()",250);
+		</script>
+	<span>&nbsp;|&nbsp;</span>
+	
+      总访问量为
+      <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+      次
+    
+  </div>
+  <div>
+  Powered by Github and MarkdownPad 2
+  </div>
+  <br>
+  <div>--------------------------- 别拉了，我是有底线的>_< ---------------------------</div>
+</footer>
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+<script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
+
+
+  <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      const $reveal = $('.reveal');
+      if ($reveal.length === 0) return;
+      const sr = ScrollReveal({ distance: 0 });
+      sr.reveal('.reveal');
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+  
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        if ('') {
+          $('').backstretch(
+          ["/images/back.jpg", "/images/back1.jpg", "/images/back2.jpg"],
+          {
+            duration: "10000",
+            fade: "2500"
+          });
+        } else {
+          $.backstretch(
+          ["/images/back.jpg", "/images/back1.jpg", "/images/back2.jpg"],
+          {
+            duration: "10000",
+            fade: "2500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: "3df74de60feed2ce1724",
+      clientSecret: "bc3dba6ff0042f1cce4eeee8b596894dc2856ef0",
+      repo: "IntPtrZero.github.io",
+      owner: "intptrzero",
+      admin: "intptrzero",
+      
+        id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+      
+      distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+    gitalk.render('gitalk-container');
+  </script>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.5/js/app.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.5/js/search.js"></script>
+
+
+
+
+<!-- 复制 -->
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  let COPY_SUCCESS = "复制成功";
+  let COPY_FAILURE = "复制失败";
+  /*页面载入完成后，创建复制按钮*/
+  !function (e, t, a) {
+    /* code */
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '  <i class="fa fa-copy"></i><span>复制</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      clipboard.on('success', function(e) {
+        //您可以加入成功提示
+        console.info('Action:', e.action);
+        console.info('Text:', e.text);
+        console.info('Trigger:', e.trigger);
+        success_prompt(COPY_SUCCESS);
+        e.clearSelection();
+      });
+      clipboard.on('error', function(e) {
+        //您可以加入失败提示
+        console.error('Action:', e.action);
+        console.error('Trigger:', e.trigger);
+        fail_prompt(COPY_FAILURE);
+      });
+    }
+    initCopyCode();
+
+  }(window, document);
+
+  /**
+   * 弹出式提示框，默认1.5秒自动消失
+   * @param message 提示信息
+   * @param style 提示样式，有alert-success、alert-danger、alert-warning、alert-info
+   * @param time 消失时间
+   */
+  var prompt = function (message, style, time)
+  {
+      style = (style === undefined) ? 'alert-success' : style;
+      time = (time === undefined) ? 1500 : time*1000;
+      $('<div>')
+          .appendTo('body')
+          .addClass('alert ' + style)
+          .html(message)
+          .show()
+          .delay(time)
+          .fadeOut();
+  };
+
+  // 成功提示
+  var success_prompt = function(message, time)
+  {
+      prompt(message, 'alert-success', time);
+  };
+
+  // 失败提示
+  var fail_prompt = function(message, time)
+  {
+      prompt(message, 'alert-danger', time);
+  };
+
+  // 提醒
+  var warning_prompt = function(message, time)
+  {
+      prompt(message, 'alert-warning', time);
+  };
+
+  // 信息提示
+  var info_prompt = function(message, time)
+  {
+      prompt(message, 'alert-info', time);
+  };
+
+</script>
+
+
+<!-- fancybox -->
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
