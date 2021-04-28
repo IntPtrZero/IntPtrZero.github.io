@@ -327,7 +327,8 @@
           <h3 id="线程同步构造"><a href="#线程同步构造" class="headerlink" title="线程同步构造"></a>线程同步构造</h3><p>线程同步总体上分为两种构造：用户模式和内核模式。其中用户模式基于CPU指令，内核模式则基于操作系统内核对象。由于用户模式构造由硬件支持，且不发生用户-内核状态切换，因此效率较高。但线程使用基于用户模式的同步时，操作系统也无法捕捉到该线程上的阻塞。因此该线程在操作系统看来总是处于非阻塞状态，这意味着线程总是参与抢占时间片，导致线程无谓的浪费CPU时间。与之相对的是内核模式构造，线程使用操作系统提供的内核对象进行同步，每当进入同步块时，代码需要切换到内核态运行，导致巨大的性能损失。但优点是操作系统可以检测到等待同步对象的线程并将其阻塞，当同步对象可用时再唤醒线程。如果拥有“锁”的线程一直不释放，基于用户模式构造的等待线程将一直在CPU上无意义的运行，称之为“活锁”。基于内核模式构造的等待线程则一直被操作系统阻塞，称之为“死锁”。总体来说“死锁”优于“活锁”，因为前者不消耗CPU时间。</p>
 <a id="more"></a>
 
-<h3 id="用户模式构造"><a href="#用户模式构造" class="headerlink" title="用户模式构造"></a>用户模式构造</h3>
+<h3 id="用户模式构造"><a href="#用户模式构造" class="headerlink" title="用户模式构造"></a>用户模式构造</h3><p>CLR提供了两种</p>
+
         </div>
         
           
@@ -338,10 +339,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-28T23:52:12+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2019-11-30T08:30:55+08:00">
   <a class='notlink'>
     <i class="fas fa-clock" aria-hidden="true"></i>
-    <p>最后更新于 2019年11月28日</p>
+    <p>最后更新于 2019年11月30日</p>
   </a>
 </div>
 
@@ -362,6 +363,25 @@
         
         
             <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2019/10/03/C-InsideOM/" rel="prev" title="C++ - 对象模型">
+                                  
+                                      C++ - 对象模型
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>C++</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
                 
                 
                     <section class="next">
@@ -528,7 +548,7 @@
     <div class='content pure'>
       <ul class="entry">
         
-          <li><a class="flat-box" title="/categories/C/" href="/categories/C/"><div class='name'>C++</div><div class='badge'>(4)</div></a></li>
+          <li><a class="flat-box" title="/categories/C/" href="/categories/C/"><div class='name'>C++</div><div class='badge'>(6)</div></a></li>
         
           <li><a class="flat-box" title="/categories/LeetCode/" href="/categories/LeetCode/"><div class='name'>LeetCode</div><div class='badge'>(6)</div></a></li>
         
@@ -567,7 +587,7 @@
 </header>
 
     <div class='content pure'>
-      <a href="/tags/NET/" style="font-size: 21.5px; color: #666">.NET</a> <a href="/tags/C/" style="font-size: 19px; color: #777">C++</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/GC/" style="font-size: 14px; color: #999">GC</a> <a href="/tags/OOP/" style="font-size: 14px; color: #999">OOP</a> <a href="/tags/STL/" style="font-size: 16.5px; color: #888">STL</a> <a href="/tags/动态规划/" style="font-size: 16.5px; color: #888">动态规划</a> <a href="/tags/多线程/" style="font-size: 19px; color: #777">多线程</a> <a href="/tags/异步/" style="font-size: 14px; color: #999">异步</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a> <a href="/tags/算法/" style="font-size: 24px; color: #555">算法</a>
+      <a href="/tags/NET/" style="font-size: 21.5px; color: #666">.NET</a> <a href="/tags/C/" style="font-size: 21.5px; color: #666">C++</a> <a href="/tags/DFS/" style="font-size: 14px; color: #999">DFS</a> <a href="/tags/GC/" style="font-size: 14px; color: #999">GC</a> <a href="/tags/OOP/" style="font-size: 14px; color: #999">OOP</a> <a href="/tags/STL/" style="font-size: 16.5px; color: #888">STL</a> <a href="/tags/动态规划/" style="font-size: 16.5px; color: #888">动态规划</a> <a href="/tags/多线程/" style="font-size: 19px; color: #777">多线程</a> <a href="/tags/异步/" style="font-size: 14px; color: #999">异步</a> <a href="/tags/泛型/" style="font-size: 14px; color: #999">泛型</a> <a href="/tags/算法/" style="font-size: 24px; color: #555">算法</a>
     </div>
   </section>
 

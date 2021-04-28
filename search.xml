@@ -4,11 +4,63 @@
   
     
     <entry>
+      <title>C++并发编程(1)</title>
+      <link href="/2020/03/20/CppConcurrency-01/"/>
+      <url>/2020/03/20/CppConcurrency-01/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> 多线程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>C++ - 对象模型</title>
+      <link href="/2019/10/03/C-InsideOM/"/>
+      <url>/2019/10/03/C-InsideOM/</url>
+      
+        <content type="html"><![CDATA[<h3 id="对象封装"><a href="#对象封装" class="headerlink" title="对象封装"></a>对象封装</h3><p>C++与C语言最大的区别在于C++提供了对抽象数据的封装支持，在C语言中，常见的做法是定义struct，然后使用在struct外部定义的方法操作struct中的数据，这种做法剥离了数据与方法之间的联系，不利于保持程序结构的清晰与一致性。C++将结构体的概念扩展为“对象”，使之支持成员函数与继承。初看起来C++对象的概念比C结构体臃肿，实际上现代编译器采取了一系列优化方式降低封装对内存的额外消耗。</p><a id="more"></a><h3 id="C-对象模型"><a href="#C-对象模型" class="headerlink" title="C++对象模型"></a>C++对象模型</h3><p>在C++对象中有两种成员变量：static和nonstatic以及三种成员函数：static、nonstatic和virtual。对于不同的成员，在内存中的布局形式可以有多种形式，以下举例说明：</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line"><span class="keyword">float</span> m_x,m_y;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> m_Count;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Show</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">X</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Count</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>简单布局模型：针对对象中的每一个成员，都分配一个指针指向它。这种布局方式的对象大小与成员类型无关，只与成员数量有关，若对象的成员很多，将会消耗大量内存，因此编译器未使用这种布局方式构造对象，但将其使用在成员指针中。<br>表格模型：这种方式将成员变量与成员函数分开安排在两个表，再在对象内部设置两个指针分别指向这两个表。编译器同样未使用这种布局，但将其用在构建虚函数表。<br>C++的对象模型综合了以上两种方案，对于成员变量，将nonstatic直接放置到对象内部(非指针)，static则放置到对象外部。对于成员函数，无论是static还是nonstatic都放在对象外部，对virtual函数则特殊处理：首先将对象的虚函数提取出来构建虚函数表，然后在对象内部放置一个指向虚函数表的指针</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CLR - 线程同步</title>
       <link href="/2019/09/24/CLR-MTSync/"/>
       <url>/2019/09/24/CLR-MTSync/</url>
       
-        <content type="html"><![CDATA[<h3 id="线程同步构造"><a href="#线程同步构造" class="headerlink" title="线程同步构造"></a>线程同步构造</h3><p>线程同步总体上分为两种构造：用户模式和内核模式。其中用户模式基于CPU指令，内核模式则基于操作系统内核对象。由于用户模式构造由硬件支持，且不发生用户-内核状态切换，因此效率较高。但线程使用基于用户模式的同步时，操作系统也无法捕捉到该线程上的阻塞。因此该线程在操作系统看来总是处于非阻塞状态，这意味着线程总是参与抢占时间片，导致线程无谓的浪费CPU时间。与之相对的是内核模式构造，线程使用操作系统提供的内核对象进行同步，每当进入同步块时，代码需要切换到内核态运行，导致巨大的性能损失。但优点是操作系统可以检测到等待同步对象的线程并将其阻塞，当同步对象可用时再唤醒线程。如果拥有“锁”的线程一直不释放，基于用户模式构造的等待线程将一直在CPU上无意义的运行，称之为“活锁”。基于内核模式构造的等待线程则一直被操作系统阻塞，称之为“死锁”。总体来说“死锁”优于“活锁”，因为前者不消耗CPU时间。</p><a id="more"></a><h3 id="用户模式构造"><a href="#用户模式构造" class="headerlink" title="用户模式构造"></a>用户模式构造</h3>]]></content>
+        <content type="html"><![CDATA[<h3 id="线程同步构造"><a href="#线程同步构造" class="headerlink" title="线程同步构造"></a>线程同步构造</h3><p>线程同步总体上分为两种构造：用户模式和内核模式。其中用户模式基于CPU指令，内核模式则基于操作系统内核对象。由于用户模式构造由硬件支持，且不发生用户-内核状态切换，因此效率较高。但线程使用基于用户模式的同步时，操作系统也无法捕捉到该线程上的阻塞。因此该线程在操作系统看来总是处于非阻塞状态，这意味着线程总是参与抢占时间片，导致线程无谓的浪费CPU时间。与之相对的是内核模式构造，线程使用操作系统提供的内核对象进行同步，每当进入同步块时，代码需要切换到内核态运行，导致巨大的性能损失。但优点是操作系统可以检测到等待同步对象的线程并将其阻塞，当同步对象可用时再唤醒线程。如果拥有“锁”的线程一直不释放，基于用户模式构造的等待线程将一直在CPU上无意义的运行，称之为“活锁”。基于内核模式构造的等待线程则一直被操作系统阻塞，称之为“死锁”。总体来说“死锁”优于“活锁”，因为前者不消耗CPU时间。</p><a id="more"></a><h3 id="用户模式构造"><a href="#用户模式构造" class="headerlink" title="用户模式构造"></a>用户模式构造</h3><p>CLR提供了两种</p>]]></content>
       
       
       <categories>
